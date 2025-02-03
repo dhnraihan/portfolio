@@ -7,24 +7,18 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
 </head>
 <body class="bg-gray-100 font-['Noto_Sans_Bengali']">
-<!-- 
-এই পোর্টফোলিও পেজে রয়েছে:
+    
+<!-- এই পোর্টফোলিও পেজে রয়েছে:
 ১. রেসপন্সিভ নেভিগেশন বার
 ২. আকর্ষণীয় হিরো সেকশন
 ৩. "আমার সম্পর্কে" সেকশন যেখানে আপনার দক্ষতা প্রদর্শন করা হয়েছে
 ৪. প্রজেক্ট গ্যালারি
 ৫. যোগাযোগ ফর্ম
-৬. ফুটার
-বৈশিষ্ট্যসমূহ:
-1. Tailwind CSS এর মাধ্যমে মডার্ন ডিজাইন
-2. মোবাইল-ফ্রেন্ডলি লেআউট
-3. বাংলা ফন্ট সাপোর্ট (Noto Sans Bengali)
-4. গ্রেডিয়েন্ট এবং শ্যাডো ইফেক্ট
-5. ইন্টারেক্টিভ হোভার ইফেক্ট
-6. আপনি এই টেমপ্লেটটি ব্যবহার করে নিজের তথ্য, ছবি এবং প্রজেক্ট যোগ করে নিতে পারেন। -->
-
+৬. ফুটার -->
 
     <!-- Navigation Bar -->
     <nav class="bg-white shadow-lg">
@@ -42,21 +36,24 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="py-20 bg-gradient-to-r from-blue-500 to-blue-700 text-white">
-        <div class="max-w-6xl mx-auto px-4 text-center">
-            <h1 class="text-4xl md:text-6xl font-bold mb-4">Hello, I'm Raihan. </h1>
-            <h1 class="text-4xl md:text-6xl font-bold mb-4 text-red-600">Sorry, there is work to be done. </h1>
+    <section id="home" class="relative py-20 bg-gradient-to-r from-blue-500 to-blue-700 text-white overflow-hidden">
+        <div id="particles-js" class="absolute top-0 left-0 w-full h-full"></div>
+        <div class="relative max-w-6xl mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">Hello, I'm Raihan.</h1>
+            <h2 class="text-3xl md:text-5xl font-bold mb-4 text-yellow-400">Sorry, there is work to be done.</h2>
             <a href="#contact">
-                <h1 class="text-3xl md:text-5xl font-bold mb-3 text-green-900 hover:text-green-600">আমি কি আপনাকে কোন হেল্প করতে পারি ?</h1>
+                <h2 class="text-2xl md:text-4xl font-semibold mb-3 text-green-400 hover:scale-105 transition-transform duration-300">আমি কি আপনাকে কোন হেল্প করতে পারি ?</h2>
             </a>
-            <p class="text-xl mb-8">Full-Stack Web Developer</p>
+            <p class="text-xl font-light mb-8">Full-Stack Web Developer</p>
             <a href="#projects">
-                <button class="bg-white text-blue-600 px-8 py-3 rounded-full font-bold hover:bg-blue-100">
-                View My Work
+                <button class="bg-white text-blue-600 px-8 py-3 rounded-full font-bold transition-transform duration-300 hover:bg-blue-100 hover:scale-110">
+                    View My Work
                 </button>
             </a>
         </div>
     </section>
+    
+    
 
     <!-- About Me -->
     <section id="about" class="py-12 ">
@@ -182,9 +179,10 @@
             <p>© 2025 My Portfolio. All rights reserved. </p>
         </div>
     </footer>
+
     <script>
         (function(){
-            emailjs.init("b_ereeKQSvz0NYtQ2");  // এখান থেকে EmailJS User ID বসান
+            emailjs.init("b_ereeKQSvz0NYtQ2"); 
         })();
     
         document.getElementById("contact-form").addEventListener("submit", function(event) {
@@ -199,5 +197,6 @@
                 });
         });
     </script>
+    <script src="assets/js/config.js"></script>
 </body>
 </html> 
