@@ -11,7 +11,7 @@
 
 </head>
 <body class="bg-gray-100 font-['Noto_Sans_Bengali']">
-    
+
 <!-- এই পোর্টফোলিও পেজে রয়েছে:
 ১. রেসপন্সিভ নেভিগেশন বার
 ২. আকর্ষণীয় হিরো সেকশন
@@ -24,7 +24,7 @@
     <nav class="bg-white shadow-lg">
         <div class="max-w-6xl mx-auto px-4">
             <div class="flex justify-between items-center py-4">
-                <div class="text-2xl font-bold text-blue-600">My Portfolio</div>
+                <div class="text-2xl font-bold text-blue-600 sm:text-center">My Portfolio</div>
                 <div class="hidden md:flex space-x-8">
                     <a href="#home" class="hover:text-blue-600">Home</a>
                     <a href="#about" class="hover:text-blue-600">About</a>
@@ -61,11 +61,11 @@
             <h2 class="text-3xl font-bold text-center mb-12">About Me</h2>
             <div class="grid md:grid-cols-2 gap-8 items-center">
                 <div class="space-y-4">
-                    <p>3+ বছরের অভিজ্ঞতা সম্পন্ন ফুলস্ট্যাক ডেভেলপার। Wordpress, React, Django, এবং MongoDB তে দক্ষ।</p>
+                    <p>2+ বছরের অভিজ্ঞতা সম্পন্ন ফুলস্ট্যাক ডেভেলপার। Wordpress, Django, এবং MongoDB তে দক্ষ।</p>
                     <div class="grid grid-cols-2 gap-4 py-8">
                         <div class="bg-white p-4 rounded shadow">
                             <h3 class="font-bold mb-2">Frontend</h3>
-                            <p>React, HTML5, CSS3, Tailwind CSS</p>
+                            <p> HTML5, CSS3, Tailwind CSS</p>
                         </div>
                         <div class="bg-white p-4 rounded shadow">
                             <h3 class="font-bold mb-2">Backend</h3>
@@ -188,7 +188,7 @@
         document.getElementById("contact-form").addEventListener("submit", function(event) {
             event.preventDefault();
     
-            emailjs.sendForm("service_gkejymv", "template_u4cnoea", this)
+            emailjs.sendForm("service_i6o88cg", "template_u4cnoea", this)
                 .then(function(response) {
                     document.getElementById("status-message").innerHTML = "✅ Message sent successfully!";
                     document.getElementById("contact-form").reset();
