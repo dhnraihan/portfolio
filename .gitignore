@@ -23,6 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 
-
 # tailwindcss
 *.exe
+.gitignore
