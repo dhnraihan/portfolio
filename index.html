@@ -19,32 +19,50 @@
     </script>
 
     <style>
-      .animated-gradient {
-        background: linear-gradient(
-          -225deg,
-          #e17055,
-          #fdcb6e,
-          #55efc4,
-          #dfe6e9,
-          #6c5ce7,
-          #e17055,
-          #a29bfe,
-          #00b894
-        );
-        background-size: 400% auto;
-        color: transparent;
-        -webkit-background-clip: text;
-        background-clip: text;
-        animation: gradientAnimation 15s linear infinite;
-      }
-      @keyframes gradientAnimation {
-        0% {
-          background-position: 0% 50%;
+        /* Profile Glow Animation */
+        @keyframes glow {
+            0% {
+                box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(255, 255, 255, 1);
+            }
+            100% {
+                box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+            }
         }
-        100% {
-          background-position: 400% 50%;
+
+        .glow-animation {
+            animation: glow 2.5s infinite alternate;
         }
-      }
+
+        /* Gradient Animation */
+        .animated-gradient {
+            background: linear-gradient(
+            -225deg,
+            #e17055,
+            #fdcb6e,
+            #55efc4,
+            #dfe6e9,
+            #6c5ce7,
+            #e17055,
+            #a29bfe,
+            #00b894
+            );
+            background-size: 400% auto;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: gradientAnimation 15s linear infinite;
+        }
+        @keyframes gradientAnimation {
+            0% {
+            background-position: 0% 50%;
+            }
+            100% {
+            background-position: 400% 50%;
+            }
+        }
     </style>
 
   </head>
@@ -104,7 +122,7 @@
           <img
             src="assets/img/profile1.jpeg"
             alt="Profile"
-            class="w-36 h-36 rounded-full shadow-2xl mb-6"
+            class="w-36 h-36 rounded-full shadow-2xl mb-6 glow-animation"
           />
         </div>
         <h1 class="text-4xl md:text-6xl font-bold mb-4">
@@ -193,7 +211,7 @@
                 >
                   Backend
                 </h3>
-                <p class="text-gray-600 dark:text-gray-300">Django, MongoDB</p>
+                <p class="text-gray-600 dark:text-gray-300">Django, MongoDB, Wordpress </p>
               </div>
             </div>
             <div class="py-8">
@@ -212,7 +230,8 @@
                 <li>JavaScript</li>
                 <li>React.js</li>
                 <li>Python</li>
-                <li>htmx</li>
+                <li>Django</li>
+                <li>Wordpress</li>
                 <li>Responsive Design</li>
               </ul>
             </div>
