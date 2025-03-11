@@ -4,18 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Web Developer Portfolio</title>
-    <!-- Tailwind CSS CDN -->
+    <!-- Tailwind CSS CDN, Font Awesome CDN, Particles.js and EmailJS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+    <!-- Tailwind CSS CDN with Dark Mode Config -->
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+        };
+    </script>
 
     <style>
       .animated-gradient {
@@ -45,8 +46,10 @@
         }
       }
     </style>
+
   </head>
   <body class="bg-gray-100 dark:bg-gray-900 font-['Noto_Sans_Bengali']">
+
     <!-- Toggle Dark Mode -->
     <div class="fixed top-4 right-4 z-50">
       <button
@@ -99,7 +102,7 @@
       <div class="relative max-w-6xl mx-auto px-4 text-center">
         <div class="flex justify-center">
           <img
-            src="https://source.unsplash.com/80x80/?face"
+            src="assets/img/profile1.jpeg"
             alt="Profile"
             class="w-36 h-36 rounded-full shadow-2xl mb-6"
           />
@@ -124,6 +127,11 @@
             href="https://github.com/dhnraihan"
             class="text-4xl hover:text-blue-300"
             ><i class="fab fa-github"></i
+          ></a>
+          <a
+            href="https://wa.me/qr/5TZJDFAGS2KME1"
+            class="text-4xl hover:text-blue-300"
+            ><i class="fab fa-whatsapp"></i
           ></a>
           <a href="https://facebook.com" class="text-4xl hover:text-blue-300"
             ><i class="fab fa-facebook"></i
@@ -460,12 +468,6 @@
       </div>
     </footer>
 
-    <!-- Tailwind CSS CDN with Dark Mode Config -->
-    <script>
-      tailwind.config = {
-        darkMode: "class",
-      };
-    </script>
 
     <!-- Smooth Scroll & Dark Mode Toggle JavaScript -->
     <script>
