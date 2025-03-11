@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web Developer Portfolio</title>
-    <link rel="stylesheet" href="assets/css/tailwind.css">
+    <!-- <link rel="stylesheet" href="assets/css/tailwind.css"> -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
@@ -12,8 +13,15 @@
 </head>
 <body class="bg-gray-100 font-['Noto_Sans_Bengali']">
 
+<!-- Toggle Dark Mode -->
+    <div class="fixed top-4 right-4 z-50">
+        <button id="theme-toggle" class="bg-gray-200 dark:bg-gray-800 p-2 rounded-full shadow-md">
+            🌙 / ☀️
+        </button>
+    </div>
+
 <!-- Navigation Bar -->
-    <nav class="bg-white shadow-lg">
+    <!-- <nav class="bg-white shadow-lg">
         <div class="max-w-6xl mx-auto px-4">
             <div class="flex justify-between items-center py-4">
                 <div class="text-2xl font-bold text-blue-600">My Portfolio</div>
@@ -25,7 +33,24 @@
                 </div>
             </div>
         </div>
+    </nav> -->
+
+
+<!-- Navigation Bar -->
+    <nav class="bg-white shadow-lg dark:bg-gray-800">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">My Portfolio</div>
+                <div class="hidden md:flex space-x-8 dark:text-white">
+                    <a href="#home" class="nav-link hover:text-blue-600 dark:hover:text-blue-400">Home</a>
+                    <a href="#about" class="nav-link hover:text-blue-600 dark:hover:text-blue-400">About</a>
+                    <a href="#projects" class="nav-link hover:text-blue-600 dark:hover:text-blue-400">Projects</a>
+                    <a href="#contact" class="nav-link hover:text-blue-600 dark:hover:text-blue-400">Contact</a>
+                </div>
+            </div>
+        </div>
     </nav>
+
 
 <!-- Hero Section -->
     <section id="home" class="relative py-20 bg-gradient-to-r from-blue-500 to-blue-700 text-white overflow-hidden">
@@ -199,24 +224,21 @@
                 }
             });
         });
-    </script>
-
-<!-- JavaScript for Dark Mode & Smooth Scroll -->
-    <!-- <script>
+        
+        // Dark Mode Toggle
         const themeToggle = document.getElementById("theme-toggle");
         const htmlElement = document.documentElement;
         
-        // Load theme preference
         if (localStorage.getItem("theme") === "dark") {
             htmlElement.classList.add("dark");
         }
         
-        // Toggle Dark Mode
         themeToggle.addEventListener("click", () => {
             htmlElement.classList.toggle("dark");
             localStorage.setItem("theme", htmlElement.classList.contains("dark") ? "dark" : "light");
         });
-    </script> -->
+    </script>
+
 
     <!-- Email-JS -->
     <script>
