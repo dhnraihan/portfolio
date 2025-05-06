@@ -11,6 +11,9 @@
     <!-- <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet" /> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollTrigger.min.js"></script>
 
     <!-- Tailwind CSS CDN with Dark Mode Config -->
     <script>
@@ -64,6 +67,64 @@
             background-position: 400% 50%;
             }
         }
+
+        /* Active Navigation Link */
+        .active-nav {
+            color: #3B82F6 !important;
+            font-weight: bold;
+            position: relative;
+        }
+
+        .active-nav::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #3B82F6;
+            transform-origin: center;
+            animation: navHighlight 0.3s ease forwards;
+        }
+
+        @keyframes navHighlight {
+            from { transform: scaleX(0); }
+            to { transform: scaleX(1); }
+        }
+
+        /* Float Animation */
+        .float-element {
+            transition: transform 0.3s ease;
+        }
+
+        /* For parallax effect */
+        .parallax-bg {
+            will-change: transform;
+        }
+
+        /* Custom Cursor */
+        .cursor-dot {
+            position: fixed;
+            width: 12px;
+            height: 12px;
+            background-color: #3B82F6;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.7;
+            transform: translate(-50%, -50%);
+            mix-blend-mode: difference;
+        }
+
+        /* Project card hover effect */
+        .project-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .project-card:hover {
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            transform: translateY(-10px) scale(1.01);
+        }
     </style>
 
   </head>
@@ -89,7 +150,7 @@
           <div class="hidden md:flex space-x-8">
             <a
               href="#home"
-              class="nav-link hover:text-blue-600 dark:text-white dark:hover:text-blue-400"
+              class="nav-link hover:text-blue-600 dark:text-white dark:hover:text-blue-400 active-nav"
               >Home</a
             >
             <a
@@ -119,7 +180,7 @@
       id="home"
       class="relative py-20 bg-gradient-to-r from-blue-500 to-blue-700 text-white overflow-hidden"
     >
-      <div id="particles-js" class="absolute top-0 left-0 w-full h-full"></div>
+      <div id="particles-js" class="absolute top-0 left-0 w-full h-full parallax-bg" data-speed="0.1"></div>
       <div class="relative max-w-6xl mx-auto px-4 text-center">
         <div class="flex justify-center">
           <img
@@ -132,22 +193,24 @@
           Hello, I'm
           <span class="animated-gradient">Raihan.</span>
         </h1>
-        <h2 class="text-3xl md:text-5xl font-bold mb-4 text-yellow-400">
+        <h2 class="text-3xl md:text-5xl font-bold mb-2 text-yellow-400">
             I'm a web developer.
         </h2>
         <a href="#contact" class="nav-link">
           <h2
-            class="text-2xl md:text-4xl font-semibold mb-3 text-green-400 hover:scale-105 transition-transform duration-300"
+            class="text-2xl md:text-4xl font-semibold mb-8 text-green-400 hover:scale-105 transition-transform duration-300 float-element"
           >
             Can i work with you?
           </h2>
         </a>
-        <p class="text-xl font-light mb-5">Full-Stack Web Developer</p>
-        <a href="mailto:hello@raihan.xyz" class="group inline-flex items-center text-xl font-medium mb-5 text-white hover:text-blue-300 transition-all duration-300 transform hover:scale-105">
-          <i class="fas fa-envelope mr-2 text-yellow-400 group-hover:animate-pulse"></i>
-          <span class="border-b-2 border-yellow-400 pb-1">hello@raihan.xyz</span>
-          <i class="fas fa-arrow-right ml-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></i>
-        </a>
+        <p class="text-xl font-light mb-3 mt-3">Full-Stack Web Developer</p>
+        <div class="flex justify-center mb-5">
+          <a href="mailto:hello@raihan.xyz" class="group inline-flex items-center text-xl font-medium text-white hover:text-blue-300 transition-all duration-300 transform hover:scale-105 float-element">
+            <i class="fas fa-envelope mr-2 text-yellow-400 group-hover:animate-pulse"></i>
+            <span class="border-b-2 border-yellow-400 pb-1 mb-3">hello@raihan.xyz</span>
+            <i class="fas fa-arrow-right ml-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></i>
+          </a>
+        </div>
         <div class="flex space-x-7 justify-center mb-5">
           <a href="https://github.com/dhnraihan"
             target="_blank" rel="noopener noreferrer"
@@ -201,7 +264,7 @@
             </p>
             <div class="grid grid-cols-2 gap-6">
               <div
-                class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow hover:shadow-lg transition-shadow duration-300"
+                class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow hover:shadow-lg transition-shadow duration-300 skill-box"
               >
                 <h3
                   class="text-xl font-bold text-blue-600 dark:text-blue-400 mb-2"
@@ -213,7 +276,7 @@
                 </p>
               </div>
               <div
-                class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow hover:shadow-lg transition-shadow duration-300"
+                class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow hover:shadow-lg transition-shadow duration-300 skill-box"
               >
                 <h3
                   class="text-xl font-bold text-blue-600 dark:text-blue-400 mb-2"
@@ -251,7 +314,7 @@
               src="assets/img/for-site.webp"
               loading="lazy"
               alt="Profile Picture"
-              class="rounded-lg shadow-2xl transform hover:scale-105 transition-transform duration-300"
+              class="rounded-lg shadow-2xl transform hover:scale-105 transition-transform duration-300 about-image"
             >
           </div>
         </div>
@@ -267,7 +330,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           
           <!-- Project 1 -->
-          <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 flex flex-col h-full">
+          <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 flex flex-col h-full project-card">
             <img
               src="assets/img/restaurant.webp"
               loading="lazy"
@@ -283,7 +346,7 @@
                 A complete restaurant management system built with Django 🐍, featuring online ordering 🛒, menu management 📋, user profiles 👤, reservations 📅, and invoice generation 🧾.
               </p>
               <div class="flex justify-center space-x-4 mt-auto pt-4">
-                <a href="http://160.191.128.132:8000/" target="_blank"
+                <a href="http://160.191.128.132:8000/" target="_blank" rel="noopener noreferrer"
                   class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition-colors duration-300">
                   <i class="fas fa-globe mr-1"></i> Live Demo
                 </a>
@@ -297,7 +360,7 @@
           </div>
 
           <!-- Project 2 -->
-          <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 flex flex-col h-full">
+          <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 flex flex-col h-full project-card">
             <img
               src="assets/img/travel-v2.webp"
               loading="lazy"
@@ -313,7 +376,7 @@
                 A Django-based web application 🐍 designed to simplify planning your next trip ✈️. With this project, users can discover destinations 🗺️, create itineraries 📝, book services 🏨, and share travel experiences 📸.
               </p>
               <div class="flex justify-center space-x-4 mt-auto pt-4">
-                <a href="https://dhnraihan.pythonanywhere.com" target="_blank"
+                <a href="https://dhnraihan.pythonanywhere.com" target="_blank" rel="noopener noreferrer"
                   class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition-colors duration-300">
                   <i class="fas fa-globe mr-1"></i> Live Demo
                 </a>
@@ -327,7 +390,7 @@
           </div>
 
           <!-- Project 3 -->
-          <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 flex flex-col h-full">
+          <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 flex flex-col h-full project-card">
             <img
               src="assets/img/ecomarce1.webp"
               loading="lazy"
@@ -343,11 +406,11 @@
                 A modern eCommerce web application built using Django 🐍 and Tailwind CSS 🎨. This project allows users to 🔍browse products, 🛒add items to their cart, 📦place orders, and 🔐manage authentication.
               </p>
               <div class="flex justify-center space-x-4 mt-auto pt-4">
-                <a href="https://e-commarce-0f2s.onrender.com/" target="_blank"
+                <a href="https://e-commarce-0f2s.onrender.com/" target="_blank" rel="noopener noreferrer"
                   class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition-colors duration-300">
                   <i class="fas fa-globe mr-1"></i> Live Demo
                 </a>
-                <a href="https://github.com/dhnraihan/e-commarce" target="_blank"
+                <a href="https://github.com/dhnraihan/e-commarce" target="_blank" rel="noopener noreferrer"
                   class="bg-gray-700 hover:bg-gray-800 text-white px-4 py-2 rounded transition-colors duration-300">
                   <i class="fab fa-github mr-1"></i> GitHub
                 </a>
@@ -356,7 +419,7 @@
           </div>
 
           <!-- Project 4 -->
-          <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 flex flex-col h-full">
+          <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 flex flex-col h-full project-card">
             <img
               src="assets/img/login-page.webp"
               loading="lazy"
@@ -372,11 +435,11 @@
                 A simple login page with a beautiful and modern design. Built using just HTML and Tailwind CSS. 
               </p>
               <div class="flex justify-center space-x-4 mt-auto pt-4">
-                <a href="https://login-page.raihan.xyz/" target="_blank"
+                <a href="https://login-page.raihan.xyz/" target="_blank" rel="noopener noreferrer"
                   class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition-colors duration-300">
                   <i class="fas fa-globe mr-1"></i> Live Demo
                 </a>
-                <a href="https://github.com/dhnraihan/login-page" target="_blank"
+                <a href="https://github.com/dhnraihan/login-page" target="_blank" rel="noopener noreferrer"
                   class="bg-gray-700 hover:bg-gray-800 text-white px-4 py-2 rounded transition-colors duration-300">
                   <i class="fab fa-github mr-1"></i> GitHub
                 </a>
@@ -385,7 +448,7 @@
           </div>
 
           <!-- Project 5 -->
-          <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 flex flex-col h-full">
+          <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 flex flex-col h-full project-card">
             <img
               src="assets/img/shop-co.webp"
               loading="lazy"
@@ -401,11 +464,11 @@
                 A simple shoping page with a beautiful and modern design. Built using just HTML and Tailwind CSS.
               </p>
               <div class="flex justify-center space-x-4 mt-auto pt-4">
-                <a href="https://shop.raihan.xyz/" target="_blank"
+                <a href="https://shop.raihan.xyz/" target="_blank" rel="noopener noreferrer"
                   class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition-colors duration-300">
                   <i class="fas fa-globe mr-1"></i> Live Demo
                 </a>
-                <a href="https://github.com/dhnraihan/shop-co" target="_blank"
+                <a href="https://github.com/dhnraihan/shop-co" target="_blank" rel="noopener noreferrer"
                   class="bg-gray-700 hover:bg-gray-800 text-white px-4 py-2 rounded transition-colors duration-300">
                   <i class="fab fa-github mr-1"></i> GitHub
                 </a>
@@ -414,7 +477,7 @@
           </div>
 
           <!-- Project 6 -->
-          <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 flex flex-col h-full">
+          <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 flex flex-col h-full project-card">
             <img
               src="assets/img/login.webp"
               loading="lazy"
@@ -430,11 +493,11 @@
                 A simple login page with a colorful design. Built using just HTML and CSS.
               </p>
               <div class="flex justify-center space-x-4 mt-auto pt-4">
-                <a href="https://login.raihan.xyz" target="_blank"
+                <a href="https://login.raihan.xyz" target="_blank" rel="noopener noreferrer"
                   class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition-colors duration-300">
                   <i class="fas fa-globe mr-1"></i> Live Demo
                 </a>
-                <a href="https://github.com/dhnraihan/Gradient-Login-Page" target="_blank"
+                <a href="https://github.com/dhnraihan/Gradient-Login-Page" target="_blank" rel="noopener noreferrer"
                   class="bg-gray-700 hover:bg-gray-800 text-white px-4 py-2 rounded transition-colors duration-300">
                   <i class="fab fa-github mr-1"></i> GitHub
                 </a>
@@ -457,12 +520,12 @@
         <div class="certificates-carousel relative">
           <!-- Carousel Navigation -->
           <div class="absolute top-1/2 left-0 transform -translate-y-1/2 z-10">
-            <button id="prev-certificate" class="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-r-lg shadow-lg transition-colors duration-300">
+            <button id="prev-certificate" title="Previous certificate" class="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-r-lg shadow-lg transition-colors duration-300">
               <i class="fas fa-chevron-left"></i>
             </button>
           </div>
           <div class="absolute top-1/2 right-0 transform -translate-y-1/2 z-10">
-            <button id="next-certificate" class="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-l-lg shadow-lg transition-colors duration-300">
+            <button id="next-certificate" title="Next certificate" class="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-l-lg shadow-lg transition-colors duration-300">
               <i class="fas fa-chevron-right"></i>
             </button>
           </div>
@@ -574,8 +637,8 @@
           
           <!-- Carousel Indicators -->
           <div class="flex justify-center mt-8 space-x-2">
-            <button class="certificate-dot w-3 h-3 rounded-full bg-blue-600 opacity-100"></button>
-            <button class="certificate-dot w-3 h-3 rounded-full bg-blue-300 opacity-50 hover:opacity-75"></button>
+            <button class="certificate-dot w-3 h-3 rounded-full bg-blue-600 opacity-100" title="Certificate 1"></button>
+            <button class="certificate-dot w-3 h-3 rounded-full bg-blue-300 opacity-50 hover:opacity-75" title="Certificate 2"></button>
             <!-- <button class="certificate-dot w-3 h-3 rounded-full bg-blue-300 opacity-50 hover:opacity-75"></button> -->
           </div>
         </div>
@@ -585,7 +648,7 @@
       <div id="certificate-modal" class="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center hidden">
         <div class="relative max-w-4xl w-full mx-4">
           <!-- Close Button -->
-          <button id="close-modal" class="absolute -top-12 right-0 text-white text-3xl hover:text-gray-300 focus:outline-none">
+          <button id="close-modal" class="absolute -top-12 right-0 text-white text-3xl hover:text-gray-300 focus:outline-none" title="Close certificate">
             <i class="fas fa-times"></i>
           </button>
           <!-- Modal Content -->
@@ -602,7 +665,7 @@
       class="py-20 bg-gradient-to-r from-blue-500 to-blue-700"
     >
       <div class="max-w-4xl mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center text-white mb-12">
+        <h2 class="text-3xl font-bold text-center text-white mb-12 typing-text">
           Contact Me.
         </h2>
         <form id="contact-form" class="space-y-6">
@@ -611,6 +674,7 @@
             <input
               type="text"
               name="user_name"
+              placeholder="Enter your name"
               required
               class="w-full p-3 border border-gray-300 rounded-lg bg-white text-gray-900 dark:bg-gray-600 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300"
             >
@@ -620,6 +684,7 @@
             <input
               type="email"
               name="user_email"
+              placeholder="Enter your email"
               required
               class="w-full p-3 border border-gray-300 rounded-lg bg-white dark:bg-gray-600 dark:text-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300"
             >
@@ -629,13 +694,14 @@
             <textarea
               name="message"
               rows="4"
+              placeholder="Type your message here"
               required
               class="w-full p-3 border border-gray-300 rounded-lg bg-white text-gray-900 dark:bg-gray-600 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300"
             ></textarea>
           </div>
           <button
             type="submit"
-            class="w-full bg-[#182C61] text-white py-3 rounded-lg hover:bg-blue-800 shadow-lg transition duration-300 transform hover:scale-105"
+            class="w-full bg- text-white py-3 rounded-lg hover:bg-blue-800 shadow-lg transition duration-300 transform hover:scale-105"
           >
             Send Message
           </button>
@@ -824,5 +890,6 @@
 
     </script>
     <script src="assets/js/config.js"></script>
+    <script src="assets/js/animations.js"></script>
   </body>
 </html>
