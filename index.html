@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Web Developer Portfolio</title>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <!-- Tailwind CSS CDN, Font Awesome CDN, Particles.js and EmailJS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <!-- <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet" /> -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <!-- GSAP CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
@@ -17,119 +20,121 @@
 
     <!-- Tailwind CSS CDN with Dark Mode Config -->
     <script>
-        tailwind.config = {
-            darkMode: "class",
-        };
+      tailwind.config = {
+        darkMode: "class",
+      };
     </script>
 
     <style>
-        /* Profile Glow Animation */
-        @keyframes glow {
-            0% {
-                box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-            }
-            50% {
-                box-shadow: 0 0 20px rgba(255, 255, 255, 1);
-            }
-            100% {
-                box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-            }
+      /* Profile Glow Animation */
+      @keyframes glow {
+        0% {
+          box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
         }
+        50% {
+          box-shadow: 0 0 20px rgba(255, 255, 255, 1);
+        }
+        100% {
+          box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        }
+      }
 
-        .glow-animation {
-            animation: glow 2.5s infinite alternate;
-        }
+      .glow-animation {
+        animation: glow 2.5s infinite alternate;
+      }
 
-        /* Gradient Animation */
-        .animated-gradient {
-            background: linear-gradient(
-            -225deg,
-            #e17055,
-            #fdcb6e,
-            #55efc4,
-            #dfe6e9,
-            #6c5ce7,
-            #e17055,
-            #a29bfe,
-            #00b894
-            );
-            background-size: 400% auto;
-            color: transparent;
-            -webkit-background-clip: text;
-            background-clip: text;
-            animation: gradientAnimation 15s linear infinite;
+      /* Gradient Animation */
+      .animated-gradient {
+        background: linear-gradient(
+          -225deg,
+          #e17055,
+          #fdcb6e,
+          #55efc4,
+          #dfe6e9,
+          #6c5ce7,
+          #e17055,
+          #a29bfe,
+          #00b894
+        );
+        background-size: 400% auto;
+        color: transparent;
+        -webkit-background-clip: text;
+        background-clip: text;
+        animation: gradientAnimation 15s linear infinite;
+      }
+      @keyframes gradientAnimation {
+        0% {
+          background-position: 0% 50%;
         }
-        @keyframes gradientAnimation {
-            0% {
-            background-position: 0% 50%;
-            }
-            100% {
-            background-position: 400% 50%;
-            }
+        100% {
+          background-position: 400% 50%;
         }
+      }
 
-        /* Active Navigation Link */
-        .active-nav {
-            color: #3B82F6 !important;
-            font-weight: bold;
-            position: relative;
-        }
+      /* Active Navigation Link */
+      .active-nav {
+        color: #3b82f6 !important;
+        font-weight: bold;
+        position: relative;
+      }
 
-        .active-nav::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background-color: #3B82F6;
-            transform-origin: center;
-            animation: navHighlight 0.3s ease forwards;
-        }
+      .active-nav::after {
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: #3b82f6;
+        transform-origin: center;
+        animation: navHighlight 0.3s ease forwards;
+      }
 
-        @keyframes navHighlight {
-            from { transform: scaleX(0); }
-            to { transform: scaleX(1); }
+      @keyframes navHighlight {
+        from {
+          transform: scaleX(0);
         }
+        to {
+          transform: scaleX(1);
+        }
+      }
 
-        /* Float Animation */
-        .float-element {
-            transition: transform 0.3s ease;
-        }
+      /* Float Animation */
+      .float-element {
+        transition: transform 0.3s ease;
+      }
 
-        /* For parallax effect */
-        .parallax-bg {
-            will-change: transform;
-        }
+      /* For parallax effect */
+      .parallax-bg {
+        will-change: transform;
+      }
 
-        /* Custom Cursor */
-        .cursor-dot {
-            position: fixed;
-            width: 12px;
-            height: 12px;
-            background-color: #3B82F6;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9999;
-            opacity: 0.7;
-            transform: translate(-50%, -50%);
-            mix-blend-mode: difference;
-        }
+      /* Custom Cursor */
+      .cursor-dot {
+        position: fixed;
+        width: 12px;
+        height: 12px;
+        background-color: #3b82f6;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9999;
+        opacity: 0.7;
+        transform: translate(-50%, -50%);
+        mix-blend-mode: difference;
+      }
 
-        /* Project card hover effect */
-        .project-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .project-card:hover {
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-            transform: translateY(-10px) scale(1.01);
-        }
+      /* Project card hover effect */
+      .project-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .project-card:hover {
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        transform: translateY(-10px) scale(1.01);
+      }
     </style>
-
   </head>
   <body class="bg-gray-200 dark:bg-gray-900 font-['Noto_Sans_Bengali']">
-
     <!-- Toggle Dark Mode -->
     <div class="fixed top-4 right-4 z-50">
       <button
@@ -164,7 +169,10 @@
               >Projects</a
             >
             <a
-              href="#certificates" class="nav-link hover:text-blue-600 dark:text-white dark:hover:text-blue-400">Certificates</a>
+              href="#certificates"
+              class="nav-link hover:text-blue-600 dark:text-white dark:hover:text-blue-400"
+              >Certificates</a
+            >
             <a
               href="#contact"
               class="nav-link hover:text-blue-600 dark:text-white dark:hover:text-blue-400"
@@ -180,21 +188,26 @@
       id="home"
       class="relative py-20 bg-gradient-to-r from-blue-500 to-blue-700 text-white overflow-hidden"
     >
-      <div id="particles-js" class="absolute top-0 left-0 w-full h-full parallax-bg" data-speed="0.1"></div>
+      <div
+        id="particles-js"
+        class="absolute top-0 left-0 w-full h-full parallax-bg"
+        data-speed="0.1"
+      ></div>
       <div class="relative max-w-6xl mx-auto px-4 text-center">
         <div class="flex justify-center">
           <img
             src="assets/img/profile1.webp"
             loading="lazy"
             alt="Profile"
-            class="w-36 h-36 rounded-full shadow-2xl mb-6 glow-animation">
+            class="w-36 h-36 rounded-full shadow-2xl mb-6 glow-animation"
+          />
         </div>
         <h1 class="text-4xl md:text-6xl font-bold mb-4">
           Hello, I'm
           <span class="animated-gradient">Raihan.</span>
         </h1>
         <h2 class="text-3xl md:text-5xl font-bold mb-2 text-yellow-400">
-            I'm a web developer.
+          I'm a web developer.
         </h2>
         <a href="#contact" class="nav-link">
           <h2
@@ -205,31 +218,52 @@
         </a>
         <p class="text-xl font-light mb-3 mt-3">Full-Stack Web Developer</p>
         <div class="flex justify-center mb-5">
-          <a href="mailto:hello@raihan.xyz" class="group inline-flex items-center text-xl font-medium text-white hover:text-blue-300 transition-all duration-300 transform hover:scale-105 float-element">
-            <i class="fas fa-envelope mr-2 text-yellow-400 group-hover:animate-pulse"></i>
-            <span class="border-b-2 border-yellow-400 pb-1 mb-3">hello@raihan.xyz</span>
-            <i class="fas fa-arrow-right ml-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></i>
+          <a
+            href="mailto:hello@raihan.xyz"
+            class="group inline-flex items-center text-xl font-medium text-white hover:text-blue-300 transition-all duration-300 transform hover:scale-105 float-element"
+          >
+            <i
+              class="fas fa-envelope mr-2 text-yellow-400 group-hover:animate-pulse"
+            ></i>
+            <span class="border-b-2 border-yellow-400 pb-1 mb-3"
+              >hello@raihan.xyz</span
+            >
+            <i
+              class="fas fa-arrow-right ml-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            ></i>
           </a>
         </div>
         <div class="flex space-x-7 justify-center mb-5">
-          <a href="https://github.com/dhnraihan"
-            target="_blank" rel="noopener noreferrer"
-            class="text-4xl hover:text-blue-300">
+          <a
+            href="https://github.com/dhnraihan"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-4xl hover:text-blue-300"
+          >
             <i class="fab fa-github"></i>
           </a>
-          <a href="https://wa.me/qr/5TZJDFAGS2KME1"
-            target="_blank" rel="noopener noreferrer"
-            class="text-4xl hover:text-blue-300">
+          <a
+            href="https://wa.me/qr/5TZJDFAGS2KME1"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-4xl hover:text-blue-300"
+          >
             <i class="fab fa-whatsapp"></i>
           </a>
-          <a href="https://www.facebook.com/profile.php?id=61569202101428"
-            target="_blank" rel="noopener noreferrer"
-            class="text-4xl hover:text-blue-300">
+          <a
+            href="https://www.facebook.com/profile.php?id=61569202101428"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-4xl hover:text-blue-300"
+          >
             <i class="fab fa-facebook"></i>
           </a>
-          <a href="https://linkedin.com/in/raihan-5b1071167"
-            target="_blank" rel="noopener noreferrer"
-            class="text-4xl hover:text-blue-300">
+          <a
+            href="https://linkedin.com/in/raihan-5b1071167"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-4xl hover:text-blue-300"
+          >
             <i class="fab fa-linkedin"></i>
           </a>
           <!-- <a href="https://twitter.com" class="text-4xl hover:text-blue-300"
@@ -237,7 +271,9 @@
           ></a> -->
         </div>
         <a href="#projects" class="nav-link">
-          <span class="bg-white text-blue-600 px-8 py-3 rounded-full font-bold transition-transform duration-300 hover:bg-blue-100 hover:scale-110">
+          <span
+            class="bg-white text-blue-600 px-8 py-3 rounded-full font-bold transition-transform duration-300 hover:bg-blue-100 hover:scale-110"
+          >
             View My Work
           </span>
         </a>
@@ -253,7 +289,8 @@
           About Me
         </h2>
         <hr
-          class="border-t-2 border-blue-600 dark:border-blue-400 mb-12 w-1/3 mx-auto">
+          class="border-t-2 border-blue-600 dark:border-blue-400 mb-12 w-1/3 mx-auto"
+        />
         <div class="grid md:grid-cols-2 gap-12 items-center">
           <div class="space-y-6">
             <p class="text-lg text-gray-700 dark:text-gray-300">
@@ -283,7 +320,9 @@
                 >
                   Backend
                 </h3>
-                <p class="text-gray-600 dark:text-gray-300">Django, Wordpress </p>
+                <p class="text-gray-600 dark:text-gray-300">
+                  Django, Wordpress
+                </p>
               </div>
             </div>
             <div class="py-8">
@@ -294,7 +333,7 @@
               </h3>
               <hr
                 class="border-t-2 border-blue-600 dark:border-blue-400 mb-4 w-1/3 mx-auto"
-              >
+              />
               <ul
                 class="list-disc list-inside text-gray-700 dark:text-gray-300 text-lg space-y-2"
               >
@@ -315,7 +354,7 @@
               loading="lazy"
               alt="Profile Picture"
               class="rounded-lg shadow-2xl transform hover:scale-105 transition-transform duration-300 about-image"
-            >
+            />
           </div>
         </div>
       </div>
@@ -324,35 +363,49 @@
     <!-- Projects -->
     <section id="projects" class="py-20 bg-gray-300 dark:bg-gray-700">
       <div class="max-w-6xl mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-12 text-gray-800 dark:text-white">
+        <h2
+          class="text-3xl font-bold text-center mb-12 text-gray-800 dark:text-white"
+        >
           My Projects
         </h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-          
           <!-- Project 1 -->
-          <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 flex flex-col h-full project-card">
+          <div
+            class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 flex flex-col h-full project-card"
+          >
             <img
               src="assets/img/restaurant.webp"
               loading="lazy"
               alt="Project 1"
               style="height: 220px"
               class="w-full h-[200px] object-cover"
-            >
+            />
             <div class="p-6 flex flex-col flex-grow">
-              <h3 class="font-bold text-xl mb-2 text-gray-800 dark:text-white text-center">
+              <h3
+                class="font-bold text-xl mb-2 text-gray-800 dark:text-white text-center"
+              >
                 Restaurant Website 🍽️
               </h3>
               <p class="text-gray-600 dark:text-gray-300 mb-4 flex-grow">
-                A complete restaurant management system built with Django 🐍, featuring online ordering 🛒, menu management 📋, user profiles 👤, reservations 📅, and invoice generation 🧾.
+                A complete restaurant management system built with Django 🐍,
+                featuring online ordering 🛒, menu management 📋, user profiles
+                👤, reservations 📅, and invoice generation 🧾.
               </p>
               <div class="flex justify-center space-x-4 mt-auto pt-4">
-                <a href="http://160.191.128.132:8000/" target="_blank" rel="noopener noreferrer"
-                  class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition-colors duration-300">
+                <a
+                  href="http://160.191.128.132:8000/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition-colors duration-300"
+                >
                   <i class="fas fa-globe mr-1"></i> Live Demo
                 </a>
-                <a href="https://github.com/dhnraihan/Restaurant" 
-                  target="_blank" rel="noopener noreferrer"
-                  class="bg-gray-700 hover:bg-gray-800 text-white px-4 py-2 rounded transition-colors duration-300">
+                <a
+                  href="https://github.com/dhnraihan/Restaurant"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="bg-gray-700 hover:bg-gray-800 text-white px-4 py-2 rounded transition-colors duration-300"
+                >
                   <i class="fab fa-github mr-1"></i> GitHub
                 </a>
               </div>
@@ -360,29 +413,43 @@
           </div>
 
           <!-- Project 2 -->
-          <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 flex flex-col h-full project-card">
+          <div
+            class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 flex flex-col h-full project-card"
+          >
             <img
               src="assets/img/travel-v2.webp"
               loading="lazy"
               alt="Project 2"
               style="height: 220px"
               class="w-full h-[200px] object-cover"
-            >
+            />
             <div class="p-6 flex flex-col flex-grow">
-              <h3 class="font-bold text-xl mb-2 text-gray-800 dark:text-white text-center">
+              <h3
+                class="font-bold text-xl mb-2 text-gray-800 dark:text-white text-center"
+              >
                 Travel & Bloging 🌍
               </h3>
               <p class="text-gray-600 dark:text-gray-300 mb-4 flex-grow">
-                A Django-based web application 🐍 designed to simplify planning your next trip ✈️. With this project, users can discover destinations 🗺️, create itineraries 📝, book services 🏨, and share travel experiences 📸.
+                A Django-based web application 🐍 designed to simplify planning
+                your next trip ✈️. With this project, users can discover
+                destinations 🗺️, create itineraries 📝, book services 🏨, and
+                share travel experiences 📸.
               </p>
               <div class="flex justify-center space-x-4 mt-auto pt-4">
-                <a href="https://dhnraihan.pythonanywhere.com" target="_blank" rel="noopener noreferrer"
-                  class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition-colors duration-300">
+                <a
+                  href="https://dhnraihan.pythonanywhere.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition-colors duration-300"
+                >
                   <i class="fas fa-globe mr-1"></i> Live Demo
                 </a>
-                <a href="https://github.com/dhnraihan/travel-v2" 
-                  target="_blank" rel="noopener noreferrer"
-                  class="bg-gray-700 hover:bg-gray-800 text-white px-4 py-2 rounded transition-colors duration-300">
+                <a
+                  href="https://github.com/dhnraihan/travel-v2"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="bg-gray-700 hover:bg-gray-800 text-white px-4 py-2 rounded transition-colors duration-300"
+                >
                   <i class="fab fa-github mr-1"></i> GitHub
                 </a>
               </div>
@@ -390,28 +457,43 @@
           </div>
 
           <!-- Project 3 -->
-          <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 flex flex-col h-full project-card">
+          <div
+            class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 flex flex-col h-full project-card"
+          >
             <img
               src="assets/img/ecomarce1.webp"
               loading="lazy"
               alt="Project 3"
               style="height: 220px"
               class="w-full h-[200px] object-cover"
-            >
+            />
             <div class="p-6 flex flex-col flex-grow">
-              <h3 class="font-bold text-xl mb-2 text-gray-800 dark:text-white text-center">
+              <h3
+                class="font-bold text-xl mb-2 text-gray-800 dark:text-white text-center"
+              >
                 E-Commerce Store 🛒
               </h3>
               <p class="text-gray-600 dark:text-gray-300 mb-4 flex-grow">
-                A modern eCommerce web application built using Django 🐍 and Tailwind CSS 🎨. This project allows users to 🔍browse products, 🛒add items to their cart, 📦place orders, and 🔐manage authentication.
+                A modern eCommerce web application built using Django 🐍 and
+                Tailwind CSS 🎨. This project allows users to 🔍browse products,
+                🛒add items to their cart, 📦place orders, and 🔐manage
+                authentication.
               </p>
               <div class="flex justify-center space-x-4 mt-auto pt-4">
-                <a href="https://e-commarce-0f2s.onrender.com/" target="_blank" rel="noopener noreferrer"
-                  class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition-colors duration-300">
+                <a
+                  href="https://e-commarce-0f2s.onrender.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition-colors duration-300"
+                >
                   <i class="fas fa-globe mr-1"></i> Live Demo
                 </a>
-                <a href="https://github.com/dhnraihan/e-commarce" target="_blank" rel="noopener noreferrer"
-                  class="bg-gray-700 hover:bg-gray-800 text-white px-4 py-2 rounded transition-colors duration-300">
+                <a
+                  href="https://github.com/dhnraihan/e-commarce"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="bg-gray-700 hover:bg-gray-800 text-white px-4 py-2 rounded transition-colors duration-300"
+                >
                   <i class="fab fa-github mr-1"></i> GitHub
                 </a>
               </div>
@@ -419,28 +501,41 @@
           </div>
 
           <!-- Project 4 -->
-          <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 flex flex-col h-full project-card">
+          <div
+            class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 flex flex-col h-full project-card"
+          >
             <img
               src="assets/img/login-page.webp"
               loading="lazy"
               alt="Project 4"
               style="height: 220px"
               class="w-full h-[200px] object-cover"
-            >
+            />
             <div class="p-6 flex flex-col flex-grow">
-              <h3 class="font-bold text-xl mb-2 text-gray-800 dark:text-white text-center">
+              <h3
+                class="font-bold text-xl mb-2 text-gray-800 dark:text-white text-center"
+              >
                 login page
               </h3>
               <p class="text-gray-600 dark:text-gray-300 mb-4 flex-grow">
-                A simple login page with a beautiful and modern design. Built using just HTML and Tailwind CSS. 
+                A simple login page with a beautiful and modern design. Built
+                using just HTML and Tailwind CSS.
               </p>
               <div class="flex justify-center space-x-4 mt-auto pt-4">
-                <a href="https://login-page.raihan.xyz/" target="_blank" rel="noopener noreferrer"
-                  class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition-colors duration-300">
+                <a
+                  href="https://login-page.raihan.xyz/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition-colors duration-300"
+                >
                   <i class="fas fa-globe mr-1"></i> Live Demo
                 </a>
-                <a href="https://github.com/dhnraihan/login-page" target="_blank" rel="noopener noreferrer"
-                  class="bg-gray-700 hover:bg-gray-800 text-white px-4 py-2 rounded transition-colors duration-300">
+                <a
+                  href="https://github.com/dhnraihan/login-page"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="bg-gray-700 hover:bg-gray-800 text-white px-4 py-2 rounded transition-colors duration-300"
+                >
                   <i class="fab fa-github mr-1"></i> GitHub
                 </a>
               </div>
@@ -448,28 +543,41 @@
           </div>
 
           <!-- Project 5 -->
-          <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 flex flex-col h-full project-card">
+          <div
+            class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 flex flex-col h-full project-card"
+          >
             <img
               src="assets/img/shop-co.webp"
               loading="lazy"
               alt="Project 5"
               style="height: 220px"
               class="w-full h-[200px] object-cover"
-            >
+            />
             <div class="p-6 flex flex-col flex-grow">
-              <h3 class="font-bold text-xl mb-2 text-gray-800 dark:text-white text-center">
+              <h3
+                class="font-bold text-xl mb-2 text-gray-800 dark:text-white text-center"
+              >
                 Shoping Page
               </h3>
               <p class="text-gray-600 dark:text-gray-300 mb-4 flex-grow">
-                A simple shoping page with a beautiful and modern design. Built using just HTML and Tailwind CSS.
+                A simple shoping page with a beautiful and modern design. Built
+                using just HTML and Tailwind CSS.
               </p>
               <div class="flex justify-center space-x-4 mt-auto pt-4">
-                <a href="https://shop.raihan.xyz/" target="_blank" rel="noopener noreferrer"
-                  class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition-colors duration-300">
+                <a
+                  href="https://shop.raihan.xyz/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition-colors duration-300"
+                >
                   <i class="fas fa-globe mr-1"></i> Live Demo
                 </a>
-                <a href="https://github.com/dhnraihan/shop-co" target="_blank" rel="noopener noreferrer"
-                  class="bg-gray-700 hover:bg-gray-800 text-white px-4 py-2 rounded transition-colors duration-300">
+                <a
+                  href="https://github.com/dhnraihan/shop-co"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="bg-gray-700 hover:bg-gray-800 text-white px-4 py-2 rounded transition-colors duration-300"
+                >
                   <i class="fab fa-github mr-1"></i> GitHub
                 </a>
               </div>
@@ -477,28 +585,41 @@
           </div>
 
           <!-- Project 6 -->
-          <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 flex flex-col h-full project-card">
+          <div
+            class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 flex flex-col h-full project-card"
+          >
             <img
               src="assets/img/login.webp"
               loading="lazy"
               alt="Project 6"
               style="height: 220px"
               class="w-full h-[200px] object-cover"
-            >
+            />
             <div class="p-6 flex flex-col flex-grow">
-              <h3 class="font-bold text-xl mb-2 text-gray-800 dark:text-white text-center">
+              <h3
+                class="font-bold text-xl mb-2 text-gray-800 dark:text-white text-center"
+              >
                 Gradient Login Page
               </h3>
               <p class="text-gray-600 dark:text-gray-300 mb-4 flex-grow">
-                A simple login page with a colorful design. Built using just HTML and CSS.
+                A simple login page with a colorful design. Built using just
+                HTML and CSS.
               </p>
               <div class="flex justify-center space-x-4 mt-auto pt-4">
-                <a href="https://login.raihan.xyz" target="_blank" rel="noopener noreferrer"
-                  class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition-colors duration-300">
+                <a
+                  href="https://login.raihan.xyz"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition-colors duration-300"
+                >
                   <i class="fas fa-globe mr-1"></i> Live Demo
                 </a>
-                <a href="https://github.com/dhnraihan/Gradient-Login-Page" target="_blank" rel="noopener noreferrer"
-                  class="bg-gray-700 hover:bg-gray-800 text-white px-4 py-2 rounded transition-colors duration-300">
+                <a
+                  href="https://github.com/dhnraihan/Gradient-Login-Page"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="bg-gray-700 hover:bg-gray-800 text-white px-4 py-2 rounded transition-colors duration-300"
+                >
                   <i class="fab fa-github mr-1"></i> GitHub
                 </a>
               </div>
@@ -511,121 +632,195 @@
     <!-- Certificates Section -->
     <section id="certificates" class="py-20 bg-gray-100 dark:bg-gray-800">
       <div class="max-w-6xl mx-auto px-4">
-        <h2 class="text-4xl font-extrabold text-center text-gray-800 dark:text-white mb-4">
+        <h2
+          class="text-4xl font-extrabold text-center text-gray-800 dark:text-white mb-4"
+        >
           My Certificates
         </h2>
-        <hr class="border-t-2 border-blue-600 dark:border-blue-400 mb-12 w-1/3 mx-auto">
-        
+        <hr
+          class="border-t-2 border-blue-600 dark:border-blue-400 mb-12 w-1/3 mx-auto"
+        />
+
         <!-- Certificates Carousel -->
         <div class="certificates-carousel relative">
           <!-- Carousel Navigation -->
           <div class="absolute top-1/2 left-0 transform -translate-y-1/2 z-10">
-            <button id="prev-certificate" title="Previous certificate" class="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-r-lg shadow-lg transition-colors duration-300">
+            <button
+              id="prev-certificate"
+              title="Previous certificate"
+              class="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-r-lg shadow-lg transition-colors duration-300"
+            >
               <i class="fas fa-chevron-left"></i>
             </button>
           </div>
           <div class="absolute top-1/2 right-0 transform -translate-y-1/2 z-10">
-            <button id="next-certificate" title="Next certificate" class="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-l-lg shadow-lg transition-colors duration-300">
+            <button
+              id="next-certificate"
+              title="Next certificate"
+              class="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-l-lg shadow-lg transition-colors duration-300"
+            >
               <i class="fas fa-chevron-right"></i>
             </button>
           </div>
-          
+
           <!-- Certificates Wrapper -->
           <div class="overflow-hidden">
-            <div id="certificates-wrapper" class="flex transition-transform duration-500 ease-in-out">
-      
+            <div
+              id="certificates-wrapper"
+              class="flex transition-transform duration-500 ease-in-out"
+            >
               <!-- Certificate 1 -->
               <div class="certificate-item min-w-full md:min-w-[33.333%] p-4">
-                <div class="bg-white dark:bg-gray-700 rounded-xl shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300 h-full flex flex-col">
+                <div
+                  class="bg-white dark:bg-gray-700 rounded-xl shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300 h-full flex flex-col"
+                >
                   <div class="relative">
-                    <img 
-                      src="assets/img/cr/skill.webp" 
-                      alt="Web Development Certificate" 
+                    <img
+                      src="assets/img/cr/skill.webp"
+                      alt="Web Development Certificate"
                       class="w-full h-48 object-cover"
-                      loading="lazy">
-                    <div class="absolute top-0 right-0 bg-blue-600 text-white px-4 py-2 rounded-bl-lg font-semibold">
+                      loading="lazy"
+                    />
+                    <div
+                      class="absolute top-0 right-0 bg-blue-600 text-white px-4 py-2 rounded-bl-lg font-semibold"
+                    >
                       2023
                     </div>
                   </div>
                   <div class="p-6 flex flex-col flex-grow">
                     <div class="flex items-center mb-4">
-                      <img src="assets/img/cr/skill-logo.webp" alt="Udemy" class="h-8 mr-3" loading="lazy">
-                      <h3 class="font-bold text-xl text-gray-800 dark:text-white">Web Development</h3>
+                      <img
+                        src="assets/img/cr/skill-logo.webp"
+                        alt="Udemy"
+                        class="h-8 mr-3"
+                        loading="lazy"
+                      />
+                      <h3
+                        class="font-bold text-xl text-gray-800 dark:text-white"
+                      >
+                        Web Development
+                      </h3>
                     </div>
                     <p class="text-gray-600 dark:text-gray-300 mb-4 flex-grow">
-                      Complete Web Development Course covering HTML, CSS, JavaScript, and popular web technologies.
+                      Complete Web Development Course covering HTML, CSS,
+                      JavaScript, and popular web technologies.
                     </p>
                     <div class="mt-auto pt-4 flex justify-between items-center">
-                      <span class="text-blue-600 dark:text-blue-400 font-semibold">
+                      <span
+                        class="text-blue-600 dark:text-blue-400 font-semibold"
+                      >
                         <i class="fas fa-award mr-1"></i> Completed
                       </span>
-                      <a href="assets/img/cr/skill.webp" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition-colors duration-300 view-certificate">
+                      <a
+                        href="assets/img/cr/skill.webp"
+                        class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition-colors duration-300 view-certificate"
+                      >
                         View Certificate
                       </a>
                     </div>
                   </div>
                 </div>
               </div>
-              
 
               <!-- Certificate 2 -->
               <div class="certificate-item min-w-full md:min-w-[33.333%] p-4">
-                <div class="bg-white dark:bg-gray-700 rounded-xl shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300 h-full flex flex-col">
+                <div
+                  class="bg-white dark:bg-gray-700 rounded-xl shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300 h-full flex flex-col"
+                >
                   <div class="relative">
-                    <img 
-                      src="assets/img/cr/wdc.webp" 
-                      alt="web designer Certificate" 
+                    <img
+                      src="assets/img/cr/wdc.webp"
+                      alt="web designer Certificate"
                       class="w-full h-48 object-cover"
-                      loading="lazy">
-                    <div class="absolute top-0 right-0 bg-green-600 text-white px-4 py-2 rounded-bl-lg font-semibold">
+                      loading="lazy"
+                    />
+                    <div
+                      class="absolute top-0 right-0 bg-green-600 text-white px-4 py-2 rounded-bl-lg font-semibold"
+                    >
                       2024
                     </div>
                   </div>
                   <div class="p-6 flex flex-col flex-grow">
                     <div class="flex items-center mb-4">
-                      <img src="assets/img/cr/bdcalling.webp" alt="Coursera" class="h-6 mr-3" loading="lazy">
-                      <h3 class="font-bold text-xl text-gray-800 dark:text-white">Web Designer</h3>
+                      <img
+                        src="assets/img/cr/bdcalling.webp"
+                        alt="Coursera"
+                        class="h-6 mr-3"
+                        loading="lazy"
+                      />
+                      <h3
+                        class="font-bold text-xl text-gray-800 dark:text-white"
+                      >
+                        Web Designer
+                      </h3>
                     </div>
                     <p class="text-gray-600 dark:text-gray-300 mb-4 flex-grow">
-                      Successfully completed the Certified Web Devlopment course at Bdcalling Academy from 2024.
+                      Successfully completed the Certified Web Devlopment course
+                      at Bdcalling Academy from 2024.
                     </p>
                     <div class="mt-auto pt-4 flex justify-between items-center">
-                      <span class="text-green-600 dark:text-green-400 font-semibold">
+                      <span
+                        class="text-green-600 dark:text-green-400 font-semibold"
+                      >
                         <i class="fas fa-award mr-1"></i> Completed
                       </span>
-                      <a href="assets/img/cr/wdc.webp" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded transition-colors duration-300 view-certificate">
+                      <a
+                        href="assets/img/cr/wdc.webp"
+                        class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded transition-colors duration-300 view-certificate"
+                      >
                         View Certificate
                       </a>
                     </div>
                   </div>
                 </div>
               </div>
-              
+
               <!-- Certificate 3 -->
               <div class="certificate-item min-w-full md:min-w-[33.333%] p-4">
-                <div class="bg-white dark:bg-gray-700 rounded-xl shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300 h-full flex flex-col">
+                <div
+                  class="bg-white dark:bg-gray-700 rounded-xl shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300 h-full flex flex-col"
+                >
                   <div class="relative">
-                    <img 
-                      src="assets/img/cr/smm.webp" 
-                      alt="Social Media Marketing Certificate" 
+                    <img
+                      src="assets/img/cr/smm.webp"
+                      alt="Social Media Marketing Certificate"
                       class="w-full h-48 object-cover"
-                      loading="lazy">
-                    <div class="absolute top-0 right-0 bg-purple-600 text-white px-4 py-2 rounded-bl-lg font-semibold">
+                      loading="lazy"
+                    />
+                    <div
+                      class="absolute top-0 right-0 bg-purple-600 text-white px-4 py-2 rounded-bl-lg font-semibold"
+                    >
                       2024
                     </div>
                   </div>
                   <div class="p-6 flex flex-col flex-grow">
                     <div class="flex items-center mb-4">
-                      <img src="assets/img/cr/bdcalling.webp" alt="Bacalling Accademy" class="h-6 mr-3" loading="lazy">
-                      <h3 class="font-bold text-xl text-gray-800 dark:text-white">Social Media Marketing</h3>
+                      <img
+                        src="assets/img/cr/bdcalling.webp"
+                        alt="Bacalling Accademy"
+                        class="h-6 mr-3"
+                        loading="lazy"
+                      />
+                      <h3
+                        class="font-bold text-xl text-gray-800 dark:text-white"
+                      >
+                        Social Media Marketing
+                      </h3>
                     </div>
                     <p class="text-gray-600 dark:text-gray-300 mb-4 flex-grow">
-                      Completed the Social Media Marketing with Freelancing course at Bdcalling Academy from 2024.                    </p>
+                      Completed the Social Media Marketing with Freelancing
+                      course at Bdcalling Academy from 2024.
+                    </p>
                     <div class="mt-auto pt-4 flex justify-between items-center">
-                      <span class="text-purple-600 dark:text-purple-400 font-semibold">
+                      <span
+                        class="text-purple-600 dark:text-purple-400 font-semibold"
+                      >
                         <i class="fas fa-award mr-1"></i> Completed
                       </span>
-                      <a href="assets/img/cr/smm.webp" class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded transition-colors duration-300 view-certificate">
+                      <a
+                        href="assets/img/cr/smm.webp"
+                        class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded transition-colors duration-300 view-certificate"
+                      >
                         View Certificate
                       </a>
                     </div>
@@ -634,26 +829,41 @@
               </div>
             </div>
           </div>
-          
+
           <!-- Carousel Indicators -->
           <div class="flex justify-center mt-8 space-x-2">
-            <button class="certificate-dot w-3 h-3 rounded-full bg-blue-600 opacity-100" title="Certificate 1"></button>
-            <button class="certificate-dot w-3 h-3 rounded-full bg-blue-300 opacity-50 hover:opacity-75" title="Certificate 2"></button>
+            <button
+              class="certificate-dot w-3 h-3 rounded-full bg-blue-600 opacity-100"
+              title="Certificate 1"
+            ></button>
+            <button
+              class="certificate-dot w-3 h-3 rounded-full bg-blue-300 opacity-50 hover:opacity-75"
+              title="Certificate 2"
+            ></button>
             <!-- <button class="certificate-dot w-3 h-3 rounded-full bg-blue-300 opacity-50 hover:opacity-75"></button> -->
           </div>
         </div>
       </div>
-      
+
       <!-- Modal Container (add this before the closing body tag) -->
-      <div id="certificate-modal" class="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center hidden">
+      <div
+        id="certificate-modal"
+        class="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center hidden"
+      >
         <div class="relative max-w-4xl w-full mx-4">
           <!-- Close Button -->
-          <button id="close-modal" class="absolute -top-12 right-0 text-white text-3xl hover:text-gray-300 focus:outline-none" title="Close certificate">
+          <button
+            id="close-modal"
+            class="absolute -top-12 right-0 text-white text-3xl hover:text-gray-300 focus:outline-none"
+            title="Close certificate"
+          >
             <i class="fas fa-times"></i>
           </button>
           <!-- Modal Content -->
-          <div class="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-2xl">
-            <img id="modal-image" src="" alt="Certificate" class="w-full">
+          <div
+            class="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-2xl"
+          >
+            <img id="modal-image" src="" alt="Certificate" class="w-full" />
           </div>
         </div>
       </div>
@@ -677,7 +887,7 @@
               placeholder="Enter your name"
               required
               class="w-full p-3 border border-gray-300 rounded-lg bg-white text-gray-900 dark:bg-gray-600 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300"
-            >
+            />
           </div>
           <div>
             <label class="block text-white mb-2">Email</label>
@@ -687,7 +897,7 @@
               placeholder="Enter your email"
               required
               class="w-full p-3 border border-gray-300 rounded-lg bg-white dark:bg-gray-600 dark:text-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300"
-            >
+            />
           </div>
           <div>
             <label class="block text-white mb-2">Message</label>
@@ -701,7 +911,7 @@
           </div>
           <button
             type="submit"
-            class="w-full bg- text-white py-3 rounded-lg hover:bg-blue-800 shadow-lg transition duration-300 transform hover:scale-105"
+            class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-800 shadow-lg transition duration-300 transform hover:scale-105"
           >
             Send Message
           </button>
@@ -718,123 +928,125 @@
     </footer>
 
     <script>
-
       // Certificates JavaScript for Certificate Carousel
-      document.addEventListener('DOMContentLoaded', function() {
-        const certificatesWrapper = document.getElementById('certificates-wrapper');
-        const prevButton = document.getElementById('prev-certificate');
-        const nextButton = document.getElementById('next-certificate');
-        const dots = document.querySelectorAll('.certificate-dot');
-        const items = document.querySelectorAll('.certificate-item');
-        
+      document.addEventListener("DOMContentLoaded", function () {
+        const certificatesWrapper = document.getElementById(
+          "certificates-wrapper"
+        );
+        const prevButton = document.getElementById("prev-certificate");
+        const nextButton = document.getElementById("next-certificate");
+        const dots = document.querySelectorAll(".certificate-dot");
+        const items = document.querySelectorAll(".certificate-item");
+
         let currentIndex = 0;
         let itemWidth = 100; // Default to full width on mobile
-        
+
         // Update item width based on screen size
         function updateItemWidth() {
-          if (window.innerWidth >= 768) { // md breakpoint
+          if (window.innerWidth >= 768) {
+            // md breakpoint
             itemWidth = 33.333; // Show 3 items on desktop
           } else {
             itemWidth = 100; // Show 1 item on mobile
           }
           goToSlide(currentIndex);
         }
-        
+
         // Go to specific slide
         function goToSlide(index) {
           currentIndex = index;
           // Make sure we don't go out of bounds
           if (currentIndex < 0) currentIndex = 0;
           if (currentIndex > items.length - 1) currentIndex = items.length - 1;
-          
+
           // Calculate the transform value based on item width
           const translateValue = -currentIndex * itemWidth;
           certificatesWrapper.style.transform = `translateX(${translateValue}%)`;
-          
+
           // Update dots
           dots.forEach((dot, i) => {
             if (i === currentIndex) {
-              dot.classList.add('bg-blue-600');
-              dot.classList.remove('bg-blue-300');
-              dot.style.opacity = '1';
+              dot.classList.add("bg-blue-600");
+              dot.classList.remove("bg-blue-300");
+              dot.style.opacity = "1";
             } else {
-              dot.classList.add('bg-blue-300');
-              dot.classList.remove('bg-blue-600');
-              dot.style.opacity = '0.5';
+              dot.classList.add("bg-blue-300");
+              dot.classList.remove("bg-blue-600");
+              dot.style.opacity = "0.5";
             }
           });
         }
-        
+
         // Event Listeners
-        prevButton.addEventListener('click', () => {
+        prevButton.addEventListener("click", () => {
           goToSlide(currentIndex - 1);
         });
-        
-        nextButton.addEventListener('click', () => {
+
+        nextButton.addEventListener("click", () => {
           goToSlide(currentIndex + 1);
         });
-        
+
         dots.forEach((dot, i) => {
-          dot.addEventListener('click', () => {
+          dot.addEventListener("click", () => {
             goToSlide(i);
           });
         });
-        
+
         // Handle resize events
-        window.addEventListener('resize', updateItemWidth);
-        
+        window.addEventListener("resize", updateItemWidth);
+
         // Initialize
         updateItemWidth();
       });
 
-
       // Certificate Modal
-  document.addEventListener('DOMContentLoaded', function() {
-    const modal = document.getElementById('certificate-modal');
-    const modalImage = document.getElementById('modal-image');
-    const closeModal = document.getElementById('close-modal');
-    
-    // Get all certificate view buttons
-    const certificateLinks = document.querySelectorAll('.certificate-item a[href^="assets/img/cr/"]');
-    
-    // Add click event to all certificate links
-    certificateLinks.forEach(link => {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        const imgSrc = this.getAttribute('href');
-        
-        // Set image source and show modal
-        modalImage.src = imgSrc;
-        modal.classList.remove('hidden');
-        document.body.style.overflow = 'hidden'; // Prevent scrolling
+      document.addEventListener("DOMContentLoaded", function () {
+        const modal = document.getElementById("certificate-modal");
+        const modalImage = document.getElementById("modal-image");
+        const closeModal = document.getElementById("close-modal");
+
+        // Get all certificate view buttons
+        const certificateLinks = document.querySelectorAll(
+          '.certificate-item a[href^="assets/img/cr/"]'
+        );
+
+        // Add click event to all certificate links
+        certificateLinks.forEach((link) => {
+          link.addEventListener("click", function (e) {
+            e.preventDefault();
+            const imgSrc = this.getAttribute("href");
+
+            // Set image source and show modal
+            modalImage.src = imgSrc;
+            modal.classList.remove("hidden");
+            document.body.style.overflow = "hidden"; // Prevent scrolling
+          });
+        });
+
+        // Close modal when clicking the close button
+        closeModal.addEventListener("click", function () {
+          modal.classList.add("hidden");
+          document.body.style.overflow = ""; // Re-enable scrolling
+        });
+
+        // Close modal when clicking outside the image
+        modal.addEventListener("click", function (e) {
+          if (e.target === modal) {
+            modal.classList.add("hidden");
+            document.body.style.overflow = ""; // Re-enable scrolling
+          }
+        });
+
+        // Close modal when pressing ESC key
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape" && !modal.classList.contains("hidden")) {
+            modal.classList.add("hidden");
+            document.body.style.overflow = ""; // Re-enable scrolling
+          }
+        });
       });
-    });
-    
-    // Close modal when clicking the close button
-    closeModal.addEventListener('click', function() {
-      modal.classList.add('hidden');
-      document.body.style.overflow = ''; // Re-enable scrolling
-    });
-    
-    // Close modal when clicking outside the image
-    modal.addEventListener('click', function(e) {
-      if (e.target === modal) {
-        modal.classList.add('hidden');
-        document.body.style.overflow = ''; // Re-enable scrolling
-      }
-    });
-    
-    // Close modal when pressing ESC key
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
-        modal.classList.add('hidden');
-        document.body.style.overflow = ''; // Re-enable scrolling
-      }
-    });
-  });
 
-
-      //  Smooth Scroll and Dark Mode Toggle JavaScript 
+      //  Smooth Scroll and Dark Mode Toggle JavaScript
       document.querySelectorAll(".nav-link").forEach((anchor) => {
         anchor.addEventListener("click", function (e) {
           e.preventDefault();
@@ -866,28 +1078,27 @@
       });
 
       // EmailJS JavaScript
-    (function () {
-            emailjs.init("b_ereeKQSvz0NYtQ2");
-          })();
+      (function () {
+        emailjs.init("b_ereeKQSvz0NYtQ2");
+      })();
 
-          document
-            .getElementById("contact-form")
-            .addEventListener("submit", function (event) {
-              event.preventDefault();
+      document
+        .getElementById("contact-form")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
 
-              emailjs.sendForm("service_i6o88cg", "template_u4cnoea", this).then(
-                function (response) {
-                  document.getElementById("status-message").innerHTML =
-                    "✅ Message sent successfully!";
-                  document.getElementById("contact-form").reset();
-                },
-                function (error) {
-                  document.getElementById("status-message").innerHTML =
-                    "❌ Message failed to send.";
-                }
-             );
-          });
-
+          emailjs.sendForm("service_i6o88cg", "template_u4cnoea", this).then(
+            function (response) {
+              document.getElementById("status-message").innerHTML =
+                "✅ Message sent successfully!";
+              document.getElementById("contact-form").reset();
+            },
+            function (error) {
+              document.getElementById("status-message").innerHTML =
+                "❌ Message failed to send.";
+            }
+          );
+        });
     </script>
     <script src="assets/js/config.js"></script>
     <script src="assets/js/animations.js"></script>
