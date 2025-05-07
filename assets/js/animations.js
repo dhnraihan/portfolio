@@ -195,56 +195,6 @@ function initCertificatesAnimations() {
 
 // Contact Section Animations
 function initContactAnimations() {
-  // Contact Form Animation
-  gsap.from("#contact-form", {
-    scrollTrigger: {
-      trigger: "#contact",
-      start: "top 70%",
-      toggleActions: "play none none none"
-    },
-    duration: 1,
-    y: 30,
-    opacity: 0,
-    ease: "power3.out"
-  });
-
-  // Input Field Animations with sequenced approach
-  const formElements = gsap.utils.toArray("#contact-form input, #contact-form textarea, #contact-form button");
-  
-  gsap.from(formElements, {
-    scrollTrigger: {
-      trigger: "#contact-form",
-      start: "top 80%",
-      toggleActions: "play none none none"
-    },
-    duration: 0.6,
-    y: 20,
-    opacity: 0,
-    stagger: 0.1,
-    ease: "power3.out"
-  });
-  
-  // Form fields focus animation
-  formElements.forEach(element => {
-    if (element.tagName === "INPUT" || element.tagName === "TEXTAREA") {
-      element.addEventListener("focus", () => {
-        gsap.to(element, {
-          duration: 0.3,
-          boxShadow: "0 0 0 3px rgba(59, 130, 246, 0.3)",
-          ease: "power1.out"
-        });
-      });
-      
-      element.addEventListener("blur", () => {
-        gsap.to(element, {
-          duration: 0.3,
-          boxShadow: "none",
-          ease: "power1.out"
-        });
-      });
-    }
-  });
-  
   // Typing animation for Contact heading
   const typingText = document.querySelector('.typing-text');
   if (typingText) {
@@ -287,6 +237,196 @@ function initContactAnimations() {
           typingText.insertBefore(document.createTextNode(char), cursorSpan);
         }
       }, index * 0.1);
+    });
+  }
+
+  // Contact Sections Reveal Animation
+  gsap.from("#contact .mb-16", {
+    scrollTrigger: {
+      trigger: "#contact",
+      start: "top 70%",
+      toggleActions: "play none none none"
+    },
+    y: 30,
+    opacity: 0,
+    duration: 1,
+    ease: "power3.out"
+  });
+
+  // Contact Info Column Animation with Staggered Effect
+  const contactInfoItems = gsap.utils.toArray("#contact .bg-white\\/10 .flex.items-start");
+  gsap.from(contactInfoItems, {
+    scrollTrigger: {
+      trigger: "#contact .bg-white\\/10",
+      start: "top 80%",
+      toggleActions: "play none none none"
+    },
+    x: -50,
+    opacity: 0,
+    duration: 0.8,
+    stagger: 0.15,
+    ease: "power2.out"
+  });
+
+  // Social Icons Reveal Animation
+  gsap.from("#contact .bg-white\\/10 .flex.space-x-4 a", {
+    scrollTrigger: {
+      trigger: "#contact .bg-white\\/10 .mt-10",
+      start: "top 85%",
+      toggleActions: "play none none none"
+    },
+    scale: 0,
+    opacity: 0,
+    duration: 0.5,
+    stagger: 0.1,
+    ease: "back.out(1.7)",
+    transformOrigin: "center"
+  });
+
+  // Contact Form Container Animation
+  gsap.from("#contact .bg-white.dark\\:bg-gray-800", {
+    scrollTrigger: {
+      trigger: "#contact .bg-white.dark\\:bg-gray-800",
+      start: "top 80%",
+      toggleActions: "play none none none"
+    },
+    y: 40,
+    opacity: 0,
+    duration: 1,
+    ease: "power3.out"
+  });
+
+  // Contact Form Elements Animation - Staggered Entry
+  const formElements = gsap.utils.toArray("#contact-form .relative, #contact-form button");
+  gsap.from(formElements, {
+    scrollTrigger: {
+      trigger: "#contact-form",
+      start: "top 85%",
+      toggleActions: "play none none none"
+    },
+    y: 20,
+    opacity: 0,
+    duration: 0.6,
+    stagger: 0.15,
+    ease: "power2.out",
+    delay: 0.3
+  });
+  
+  // Background blobs subtle movement animation
+  gsap.to("#contact .absolute.top-20", {
+    y: -15,
+    x: 10,
+    duration: 8,
+    repeat: -1,
+    yoyo: true,
+    ease: "sine.inOut"
+  });
+  
+  gsap.to("#contact .absolute.bottom-10", {
+    y: 15,
+    x: -10,
+    duration: 8,
+    repeat: -1,
+    yoyo: true,
+    ease: "sine.inOut", 
+    delay: 0.5
+  });
+  
+  // Form hover effects
+  const inputFields = document.querySelectorAll("#contact-form input, #contact-form textarea");
+  
+  inputFields.forEach(field => {
+    field.addEventListener("mouseenter", () => {
+      gsap.to(field, {
+        scale: 1.02,
+        duration: 0.3,
+        ease: "power1.out"
+      });
+    });
+    
+    field.addEventListener("mouseleave", () => {
+      gsap.to(field, {
+        scale: 1,
+        duration: 0.3,
+        ease: "power1.out"
+      });
+    });
+  });
+  
+  // Submit button hover animation
+  const submitButton = document.querySelector("#contact-form button[type='submit']");
+  if (submitButton) {
+    // Initial attention-grabbing animation
+    gsap.timeline({repeat: -1, repeatDelay: 1})
+      .to(submitButton, {
+        boxShadow: '0 0 20px rgba(99, 102, 241, 0.8)',
+        duration: 1,
+        ease: "sine.inOut"
+      })
+      .to(submitButton, {
+        boxShadow: '0 0 10px rgba(79, 70, 229, 0.4)',
+        duration: 1,
+        ease: "sine.inOut"
+      });
+    
+    // Enhanced hover effect
+    submitButton.addEventListener("mouseenter", () => {
+      gsap.to(submitButton, {
+        scale: 1.05,
+        duration: 0.3,
+        ease: "power2.out",
+        boxShadow: '0 0 30px rgba(99, 102, 241, 1)'
+      });
+      
+      gsap.to(submitButton.querySelector("i"), {
+        x: 8,
+        rotation: 15,
+        duration: 0.4,
+        ease: "back.out(1.7)"
+      });
+    });
+    
+    submitButton.addEventListener("mouseleave", () => {
+      gsap.to(submitButton, {
+        scale: 1,
+        duration: 0.3,
+        ease: "power2.out"
+      });
+      
+      gsap.to(submitButton.querySelector("i"), {
+        x: 0,
+        rotation: 0,
+        duration: 0.3,
+        ease: "power2.out"
+      });
+    });
+  }
+  
+  // Submit animation
+  const contactForm = document.getElementById("contact-form");
+  const statusMessage = document.getElementById("status-message");
+  
+  if (contactForm) {
+    contactForm.addEventListener("submit", function(e) {
+      // Create a timeline for the submit animation
+      const submitTl = gsap.timeline();
+      
+      // Get the button
+      const button = contactForm.querySelector("button");
+      
+      // Animate the button
+      submitTl.to(button, {
+        scale: 0.95,
+        duration: 0.1,
+        ease: "power1.inOut"
+      })
+      .to(button, {
+        scale: 1,
+        duration: 0.2,
+        ease: "back.out(1.5)"
+      });
+      
+      // Success message animation happens in the emailJS callback
     });
   }
 }

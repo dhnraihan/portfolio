@@ -132,6 +132,129 @@
         box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
         transform: translateY(-10px) scale(1.01);
       }
+
+      /* Submit Button Glow Effect */
+      .btn-glow {
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+        border: 2px solid transparent;
+        transition: all 0.3s ease;
+      }
+      
+      .btn-glow::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 0.5rem; /* match rounded-lg */
+        padding: 3px; /* thickness of the gradient border */
+        background: linear-gradient(
+          45deg, 
+          rgba(199, 210, 254, 0), 
+          rgba(99, 102, 241, 1), 
+          rgba(147, 51, 234, 1), 
+          rgba(99, 102, 241, 1),
+          rgba(199, 210, 254, 0)
+        );
+        background-size: 400% auto;
+        -webkit-mask: 
+          linear-gradient(#fff 0 0) content-box, 
+          linear-gradient(#fff 0 0);
+        mask: 
+          linear-gradient(#fff 0 0) content-box, 
+          linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        animation: border-animate 3s infinite linear;
+        opacity: 0.8;
+      }
+      
+      @keyframes border-animate {
+        0% {
+          background-position: 0% center;
+        }
+        100% {
+          background-position: 400% center;
+        }
+      }
+      
+      .btn-glow::after {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 60%);
+        opacity: 0.5;
+        z-index: 0;
+        animation: pulse-glow 3s infinite;
+      }
+      
+      .btn-glow:hover {
+        border-color: rgba(255, 255, 255, 0.5);
+        box-shadow: 0 0 25px rgba(99, 102, 241, 0.8);
+      }
+      
+      .btn-glow:hover::before {
+        opacity: 1;
+      }
+      
+      @keyframes pulse-glow {
+        0% {
+          transform: scale(0.8);
+          opacity: 0.2;
+        }
+        50% {
+          opacity: 0.5;
+        }
+        100% {
+          transform: scale(1.2);
+          opacity: 0.2;
+        }
+      }
+      
+      .dark .btn-glow {
+        box-shadow: 0 0 30px rgba(79, 70, 229, 0.6);
+        border-color: rgba(139, 92, 246, 0.5);
+      }
+      
+      .dark .btn-glow:hover {
+        box-shadow: 0 0 40px rgba(99, 102, 241, 0.8);
+        border-color: rgba(167, 139, 250, 0.8);
+      }
+
+      .form-group .flex:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+      
+      .dark .form-group .flex:hover {
+        box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2);
+      }
+
+      /* Additional button visibility in dark mode */
+      .dark #contact-form button[type="submit"] {
+        background-image: linear-gradient(135deg, #6366f1, #a855f7);
+        position: relative;
+        z-index: 5;
+      }
+
+      /* Make sure dark mode text is visible */
+      .dark #contact-form button[type="submit"] span,
+      .dark #contact-form button[type="submit"] i {
+        color: white;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Extra glow effect for dark mode */
+      .dark .btn-highlight-container::before {
+        content: '';
+        position: absolute;
+        inset: -10px;
+        background: radial-gradient(circle, rgba(99, 102, 241, 0.4) 0%, transparent 70%);
+        border-radius: 16px;
+        z-index: 1;
+      }
     </style>
   </head>
   <body class="bg-gray-200 dark:bg-gray-900 font-['Noto_Sans_Bengali']">
@@ -870,52 +993,162 @@
     <!-- Contact -->
     <section
       id="contact"
-      class="py-20 bg-gradient-to-r from-blue-500 to-blue-700"
+      class="py-20 bg-gradient-to-bl from-blue-600 to-blue-900 relative overflow-hidden"
     >
-      <div class="max-w-4xl mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center text-white mb-12 typing-text">
-          Contact Me.
-        </h2>
-        <form id="contact-form" class="space-y-6">
-          <div>
-            <label class="block text-white mb-2">Name</label>
-            <input
-              type="text"
-              name="user_name"
-              placeholder="Enter your name"
-              required
-              class="w-full p-3 border border-gray-300 rounded-lg bg-white text-gray-900 dark:bg-gray-600 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300"
-            />
-          </div>
-          <div>
-            <label class="block text-white mb-2">Email</label>
-            <input
-              type="email"
-              name="user_email"
-              placeholder="Enter your email"
-              required
-              class="w-full p-3 border border-gray-300 rounded-lg bg-white dark:bg-gray-600 dark:text-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300"
-            />
-          </div>
-          <div>
-            <label class="block text-white mb-2">Message</label>
-            <textarea
-              name="message"
-              rows="4"
-              placeholder="Type your message here"
-              required
-              class="w-full p-3 border border-gray-300 rounded-lg bg-white text-gray-900 dark:bg-gray-600 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300"
-            ></textarea>
-          </div>
-          <button
-            type="submit"
-            class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-800 shadow-lg transition duration-300 transform hover:scale-105"
-          >
-            Send Message
-          </button>
-        </form>
-        <p id="status-message" class="text-center text-white mt-4"></p>
+      <!-- Background particles/blobs for visual interest -->
+      <div class="absolute inset-0 opacity-10">
+        <div class="absolute top-20 left-20 w-64 h-64 rounded-full bg-yellow-400 filter blur-3xl"></div>
+        <div class="absolute bottom-10 right-10 w-80 h-80 rounded-full bg-blue-300 filter blur-3xl"></div>
       </div>
+
+      <div class="max-w-6xl mx-auto px-4 relative z-10">
+        <div class="mb-16 text-center">
+          <h2 class="text-4xl font-extrabold text-white mb-4 typing-text">
+            Let's Work Together
+          </h2>
+          <p class="text-blue-100 text-lg max-w-2xl mx-auto">
+            Have a project in mind or want to discuss a potential collaboration? Feel free to reach out using the form below or through my contact details.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <!-- Contact Info Column -->
+          <div class="bg-white/10 backdrop-blur-lg rounded-2xl p-8 shadow-xl">
+            <h3 class="text-2xl font-bold text-white mb-8">Contact Information</h3>
+            
+            <div class="space-y-6">
+              <div class="flex items-start space-x-4">
+                <div class="bg-blue-700 p-3 rounded-lg">
+                  <i class="fas fa-map-marker-alt text-white text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="text-lg font-semibold text-white">Location</h4>
+                  <p class="text-blue-100">Gazipur, Dhaka, Bangladesh</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start space-x-4">
+                <div class="bg-blue-700 p-3 rounded-lg">
+                  <i class="fas fa-envelope text-white text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="text-lg font-semibold text-white">Email</h4>
+                  <a href="mailto:hello@raihan.xyz" class="text-blue-100 hover:text-white transition-colors">hello@raihan.xyz</a>
+                </div>
+              </div>
+              
+              <div class="flex items-start space-x-4">
+                <div class="bg-blue-700 p-3 rounded-lg">
+                  <i class="fas fa-phone text-white text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="text-lg font-semibold text-white">Phone</h4>
+                  <p class="text-blue-100">+880 1844-285788</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start space-x-4">
+                <div class="bg-blue-700 p-3 rounded-lg">
+                  <i class="fas fa-clock text-white text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="text-lg font-semibold text-white">Working Hours</h4>
+                  <p class="text-blue-100">Sat - Fri: 9:00 AM - 6:00 PM</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="mt-10">
+              <h4 class="text-lg font-semibold text-white mb-4">Find me on</h4>
+              <div class="flex space-x-4">
+                <a href="https://github.com/dhnraihan" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="p-3 bg-blue-700 hover:bg-blue-800 rounded-full transition-all duration-300 transform hover:scale-110">
+                  <i class="fab fa-github text-white"></i>
+                </a>
+                <a href="https://linkedin.com/in/raihan-5b1071167" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="p-3 bg-blue-700 hover:bg-blue-800 rounded-full transition-all duration-300 transform hover:scale-110">
+                  <i class="fab fa-linkedin-in text-white"></i>
+                </a>
+                <a href="https://wa.me/qr/5TZJDFAGS2KME1" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="p-3 bg-blue-700 hover:bg-blue-800 rounded-full transition-all duration-300 transform hover:scale-110">
+                  <i class="fab fa-whatsapp text-white"></i>
+                </a>
+                <a href="https://www.facebook.com/profile.php?id=61569202101428" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="p-3 bg-blue-700 hover:bg-blue-800 rounded-full transition-all duration-300 transform hover:scale-110">
+                  <i class="fab fa-facebook-f text-white"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Contact Form Column -->
+          <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden transform transition-all duration-300 hover:shadow-2xl">
+            <div class="p-8">
+              <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-8">Send Me a Message</h3>
+              
+              <form id="contact-form" class="space-y-6">
+                <div class="relative">
+                  <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <i class="fas fa-user text-gray-400 dark:text-gray-300"></i>
+                  </div>
+                  <input
+                    type="text"
+                    name="user_name"
+                    placeholder="Your Name"
+                    required
+                    class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg bg-white text-gray-900 dark:bg-gray-700 dark:text-white dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 hover:border-blue-500 dark:hover:border-blue-400"
+                  />
+                </div>
+                
+                <div class="relative">
+                  <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <i class="fas fa-envelope text-gray-400 dark:text-gray-300"></i>
+                  </div>
+                  <input
+                    type="email"
+                    name="user_email"
+                    placeholder="Your Email"
+                    required
+                    class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg bg-white text-gray-900 dark:bg-gray-700 dark:text-white dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 hover:border-blue-500 dark:hover:border-blue-400"
+                  />
+                </div>
+                
+                <div class="relative">
+                  <div class="absolute top-3 left-0 pl-3 flex items-start pointer-events-none">
+                    <i class="fas fa-pen text-gray-400 dark:text-gray-300"></i>
+                  </div>
+                  <textarea
+                    name="message"
+                    rows="4"
+                    placeholder="Your Message"
+                    required
+                    class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg bg-white text-gray-900 dark:bg-gray-700 dark:text-white dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 hover:border-blue-500 dark:hover:border-blue-400"
+                  ></textarea>
+                </div>
+                
+                <!-- Button Container with Glow Effect -->
+                <div class="mt-8 relative btn-highlight-container" style="z-index: 10;">
+                  <!-- Background glow effect -->
+                  <div class="absolute inset-0 bg-gradient-to-r from-indigo-500/30 to-purple-500/30 blur-xl rounded-lg"></div>
+                  
+                  <!-- Submit Button -->
+                  <button
+                    type="submit"
+                    class="w-full py-5 px-8 bg-gradient-to-r from-indigo-500 to-purple-500 text-white text-xl font-extrabold rounded-lg shadow-2xl transition-all duration-300 transform hover:-translate-y-1 flex justify-center items-center focus:outline-none focus:ring-4 focus:ring-purple-500 focus:ring-opacity-50 border-2 border-white hover:border-white btn-glow relative z-10"
+                    style="background-image: linear-gradient(135deg, #4f46e5, #7c3aed) !important; text-shadow: 0 1px 3px rgba(0,0,0,0.3); color: white !important; display: flex !important; visibility: visible !important; opacity: 1 !important; position: relative !important; z-index: 999 !important;"
+                  >
+                    <span class="relative z-10 flex items-center" style="color: white !important; visibility: visible !important; opacity: 1 !important;">
+                      <span class="mr-3" style="color: white !important; visibility: visible !important;">Send Message</span>
+                      <i class="fas fa-paper-plane text-lg" style="color: white !important; visibility: visible !important;"></i>
+                    </span>
+                  </button>
+                </div>
+                
+                <p id="status-message" class="text-center text-base mt-6 font-medium text-green-500 dark:text-green-400 min-h-[24px]"></p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Decoration elements -->
+      <!-- <div class="absolute bottom-0 left-0 w-full h-24 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDBweCIgdmlld0JveD0iMCAwIDEyODAgMTQwIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxnIGZpbGw9IiNmZmZmZmYiPjxwYXRoIGQ9Ik0wIDB2MTQwaDEyODBWMHoiLz48L2c+PC9zdmc+')] bg-bottom bg-repeat-x -mb-1"></div> -->
     </section>
     
     <!-- Footer -->
@@ -1084,16 +1317,45 @@
         .getElementById("contact-form")
         .addEventListener("submit", function (event) {
           event.preventDefault();
+          
+          const submitBtn = this.querySelector('button[type="submit"]');
+          const statusMsg = document.getElementById("status-message");
+          const originalBtnText = submitBtn.innerHTML;
+          
+          // Update button state
+          submitBtn.innerHTML = '<span>Sending...</span> <i class="fas fa-spinner fa-spin ml-2"></i>';
+          submitBtn.disabled = true;
+          submitBtn.classList.add('opacity-75');
+          
+          // Clear previous status
+          statusMsg.innerHTML = '';
+          statusMsg.className = "text-center text-base mt-4 font-medium min-h-[24px]";
 
           emailjs.sendForm("service_i6o88cg", "template_u4cnoea", this).then(
             function (response) {
-              document.getElementById("status-message").innerHTML =
-                "✅ Message sent successfully!";
+              // Success message
+              statusMsg.innerHTML = "✅ Message sent successfully!";
+              statusMsg.classList.add('text-green-500', 'dark:text-green-400');
+              
+              // Reset form
               document.getElementById("contact-form").reset();
+              
+              // Restore button after 1.5 seconds
+              setTimeout(() => {
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('opacity-75');
+              }, 1500);
             },
             function (error) {
-              document.getElementById("status-message").innerHTML =
-                "❌ Message failed to send.";
+              // Error message
+              statusMsg.innerHTML = "❌ Failed to send message. Please try again.";
+              statusMsg.classList.add('text-red-500', 'dark:text-red-400');
+              
+              // Restore button
+              submitBtn.innerHTML = originalBtnText;
+              submitBtn.disabled = false;
+              submitBtn.classList.remove('opacity-75');
             }
           );
         });
