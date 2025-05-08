@@ -255,6 +255,100 @@
         border-radius: 16px;
         z-index: 1;
       }
+
+      /* Social Icons Hero Section */
+      .social-hero-icon {
+        transform: translateY(0);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .social-hero-icon:hover {
+        transform: translateY(-5px);
+      }
+      
+      /* Social Icons Contact Section - Enhanced */
+      .social-contact-icon {
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+      }
+      
+      .social-contact-icon::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 40%;
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15), transparent);
+        z-index: 2;
+        border-radius: 10px 10px 0 0;
+      }
+      
+      .social-contact-icon::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 40%;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.2), transparent);
+        z-index: 2;
+        border-radius: 0 0 10px 10px;
+      }
+      
+      .social-icon-glow {
+        background: radial-gradient(circle at center, rgba(255, 255, 255, 0.8) 0%, transparent 70%);
+        z-index: 3;
+      }
+      
+      .social-contact-icon:hover .social-icon-glow {
+        opacity: 0.3;
+      }
+      
+      .social-icon-shine {
+        position: absolute;
+        top: -50%;
+        left: -100%;
+        width: 50%;
+        height: 200%;
+        background: linear-gradient(
+          to right,
+          rgba(255, 255, 255, 0) 0%,
+          rgba(255, 255, 255, 0.3) 50%,
+          rgba(255, 255, 255, 0) 100%
+        );
+        transform: rotate(25deg);
+        z-index: 4;
+        transition: all 0.75s;
+      }
+      
+      .social-contact-icon:hover .social-icon-shine {
+        animation: shineSweep 1s forwards;
+      }
+      
+      @keyframes shineSweep {
+        0% {
+          left: -100%;
+        }
+        100% {
+          left: 200%;
+        }
+      }
+      
+      .social-contact-icon i {
+        transition: all 0.5s ease;
+        transform: scale(0.9);
+      }
+      
+      .social-contact-icon:hover i {
+        transform: scale(1.2);
+        filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.7));
+      }
+      
+      .dark .social-contact-icon {
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      }
     </style>
   </head>
   <body class="bg-gray-200 dark:bg-gray-900 font-['Noto_Sans_Bengali']">
@@ -356,46 +450,38 @@
             ></i>
           </a>
         </div>
-        <div class="flex space-x-7 justify-center mb-5">
-          <a
-            href="https://github.com/dhnraihan"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-4xl hover:text-blue-300"
-            aria-label="GitHub Profile"
-          >
-            <i class="fab fa-github"></i>
+        <div class="flex space-x-6 justify-center mb-6">
+          <a href="https://github.com/dhnraihan" target="_blank" rel="noopener noreferrer" aria-label="GitHub" 
+            class="social-contact-icon relative w-14 h-14 flex items-center justify-center rounded-xl overflow-hidden transform transition-all duration-500 hover:scale-110 hover:shadow-[0_0_25px_rgba(59,130,246,0.7)]">
+            <span class="absolute inset-0 bg-gradient-to-br from-gray-800 via-gray-700 to-gray-900 opacity-90"></span>
+            <span class="social-icon-glow absolute inset-0 opacity-0 transition-opacity duration-500"></span>
+            <i class="fab fa-github text-2xl text-white relative z-10"></i>
+            <span class="social-icon-shine"></span>
           </a>
-          <a
-            href="https://wa.me/qr/5TZJDFAGS2KME1"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-4xl hover:text-blue-300"
-            aria-label="WhatsApp Contact"
-          >
-            <i class="fab fa-whatsapp"></i>
+          
+          <a href="https://linkedin.com/in/raihan-5b1071167" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" 
+            class="social-contact-icon relative w-14 h-14 flex items-center justify-center rounded-xl overflow-hidden transform transition-all duration-500 hover:scale-110 hover:shadow-[0_0_25px_rgba(59,130,246,0.7)]">
+            <span class="absolute inset-0 bg-gradient-to-br from-blue-600 via-blue-500 to-indigo-600 opacity-90"></span>
+            <span class="social-icon-glow absolute inset-0 opacity-0 transition-opacity duration-500"></span>
+            <i class="fab fa-linkedin-in text-2xl text-white relative z-10"></i>
+            <span class="social-icon-shine"></span>
           </a>
-          <a
-            href="https://www.facebook.com/profile.php?id=61569202101428"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-4xl hover:text-blue-300"
-            aria-label="Facebook Profile"
-          >
-            <i class="fab fa-facebook"></i>
+          
+          <a href="https://wa.me/qr/5TZJDFAGS2KME1" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" 
+            class="social-contact-icon relative w-14 h-14 flex items-center justify-center rounded-xl overflow-hidden transform transition-all duration-500 hover:scale-110 hover:shadow-[0_0_25px_rgba(59,130,246,0.7)]">
+            <span class="absolute inset-0 bg-gradient-to-br from-green-600 via-green-500 to-emerald-600 opacity-90"></span>
+            <span class="social-icon-glow absolute inset-0 opacity-0 transition-opacity duration-500"></span>
+            <i class="fab fa-whatsapp text-2xl text-white relative z-10"></i>
+            <span class="social-icon-shine"></span>
           </a>
-          <a
-            href="https://linkedin.com/in/raihan-5b1071167"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-4xl hover:text-blue-300"
-            aria-label="LinkedIn Profile"
-          >
-            <i class="fab fa-linkedin"></i>
+          
+          <a href="https://www.facebook.com/profile.php?id=61569202101428" target="_blank" rel="noopener noreferrer" aria-label="Facebook" 
+            class="social-contact-icon relative w-14 h-14 flex items-center justify-center rounded-xl overflow-hidden transform transition-all duration-500 hover:scale-110 hover:shadow-[0_0_25px_rgba(59,130,246,0.7)]">
+            <span class="absolute inset-0 bg-gradient-to-br from-blue-600 via-blue-500 to-indigo-600 opacity-90"></span>
+            <span class="social-icon-glow absolute inset-0 opacity-0 transition-opacity duration-500"></span>
+            <i class="fab fa-facebook-f text-2xl text-white relative z-10"></i>
+            <span class="social-icon-shine"></span>
           </a>
-          <!-- <a href="https://twitter.com" class="text-4xl hover:text-blue-300"
-            ><i class="fab fa-twitter"></i
-          ></a> -->
         </div>
         <a href="#projects" class="nav-link">
           <span
@@ -1061,18 +1147,33 @@
             
             <div class="mt-10">
               <h4 class="text-lg font-semibold text-white mb-4">Find me on</h4>
-              <div class="flex space-x-4">
-                <a href="https://github.com/dhnraihan" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="p-3 bg-blue-700 hover:bg-blue-800 rounded-full transition-all duration-300 transform hover:scale-110">
-                  <i class="fab fa-github text-white"></i>
+              <div class="flex justify-center mt-8 space-x-6">
+                <a href="https://github.com/dhnraihan" target="_blank" rel="noopener noreferrer" 
+                  class="social-hero-icon group relative overflow-hidden bg-gradient-to-br from-gray-800 to-gray-600 text-white p-3.5 rounded-lg shadow-lg transition-all duration-500 hover:shadow-blue-400/50 hover:shadow-xl" 
+                  aria-label="GitHub Profile">
+                  <div class="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <i class="fab fa-github text-3xl relative z-10 group-hover:animate-pulse"></i>
                 </a>
-                <a href="https://linkedin.com/in/raihan-5b1071167" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="p-3 bg-blue-700 hover:bg-blue-800 rounded-full transition-all duration-300 transform hover:scale-110">
-                  <i class="fab fa-linkedin-in text-white"></i>
+                
+                <a href="https://wa.me/qr/5TZJDFAGS2KME1" target="_blank" rel="noopener noreferrer" 
+                  class="social-hero-icon group relative overflow-hidden bg-gradient-to-br from-green-500 to-green-700 text-white p-3.5 rounded-lg shadow-lg transition-all duration-500 hover:shadow-green-400/50 hover:shadow-xl" 
+                  aria-label="WhatsApp Contact">
+                  <div class="absolute inset-0 bg-gradient-to-r from-green-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <i class="fab fa-whatsapp text-3xl relative z-10 group-hover:animate-pulse"></i>
                 </a>
-                <a href="https://wa.me/qr/5TZJDFAGS2KME1" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="p-3 bg-blue-700 hover:bg-blue-800 rounded-full transition-all duration-300 transform hover:scale-110">
-                  <i class="fab fa-whatsapp text-white"></i>
+                
+                <a href="https://www.facebook.com/profile.php?id=61569202101428" target="_blank" rel="noopener noreferrer" 
+                  class="social-hero-icon group relative overflow-hidden bg-gradient-to-br from-blue-600 to-blue-800 text-white p-3.5 rounded-lg shadow-lg transition-all duration-500 hover:shadow-blue-400/50 hover:shadow-xl" 
+                  aria-label="Facebook Profile">
+                  <div class="absolute inset-0 bg-gradient-to-r from-blue-400 to-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <i class="fab fa-facebook text-3xl relative z-10 group-hover:animate-pulse"></i>
                 </a>
-                <a href="https://www.facebook.com/profile.php?id=61569202101428" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="p-3 bg-blue-700 hover:bg-blue-800 rounded-full transition-all duration-300 transform hover:scale-110">
-                  <i class="fab fa-facebook-f text-white"></i>
+                
+                <a href="https://linkedin.com/in/raihan-5b1071167" target="_blank" rel="noopener noreferrer" 
+                  class="social-hero-icon group relative overflow-hidden bg-gradient-to-br from-blue-500 to-blue-700 text-white p-3.5 rounded-lg shadow-lg transition-all duration-500 hover:shadow-blue-400/50 hover:shadow-xl" 
+                  aria-label="LinkedIn Profile">
+                  <div class="absolute inset-0 bg-gradient-to-r from-indigo-400 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <i class="fab fa-linkedin text-3xl relative z-10 group-hover:animate-pulse"></i>
                 </a>
               </div>
             </div>
