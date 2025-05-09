@@ -410,22 +410,25 @@
       <div
         id="particles-js"
         class="absolute top-0 left-0 w-full h-full parallax-bg"
+        style="z-index: 1; pointer-events: auto;"
         data-speed="0.1"
       ></div>
-      <div class="relative max-w-6xl mx-auto px-4 text-center">
+      
+      <!-- Content container positioned above particles with pointer-events set to none -->
+      <div class="relative max-w-6xl mx-auto px-4 text-center" style="z-index: 10; position: relative; pointer-events: auto;">
         <div class="flex justify-center">
           <img
             src="assets/img/profile1.webp"
             loading="lazy"
             alt="Profile"
-            class="w-36 h-36 rounded-full shadow-2xl mb-6 glow-animation"
+            class="w-36 h-36 rounded-full shadow-2xl mb-6 glow-animation relative"
           />
         </div>
-        <h1 class="text-4xl md:text-6xl font-bold mb-4">
-          Hello, I'm
+        <h1 class="text-4xl md:text-6xl font-bold mb-4 relative">
+          <span data-i18n="hero-hello">Hello, I'm</span>
           <span class="animated-gradient">Raihan.</span>
         </h1>
-        <div class="mb-6">
+        <div class="mb-6 relative">
           <h2 class="text-3xl md:text-5xl font-bold mb-2 text-yellow-400">
             Creative Web Developer
           </h2>
@@ -434,7 +437,7 @@
             Specializing in <span class="font-medium text-yellow-200">modern web solutions</span> that deliver results.
           </p>
         </div>
-        <div class="flex flex-col md:flex-row items-center justify-center gap-4 mb-8 mt-[-20px]">
+        <div class="flex flex-col md:flex-row items-center justify-center gap-4 mb-8 mt-[-21px] relative">
           <a href="#contact" class="nav-link">
             <h2
               class="text-2xl md:text-3xl font-semibold text-green-400 hover:scale-105 transition-transform duration-300 float-element"
