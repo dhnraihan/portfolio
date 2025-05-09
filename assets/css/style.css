@@ -1,0 +1,26 @@
+/* Base Font Family */
+body {
+  font-family: 'Times New Roman';
+}
+
+/* English text will use Times New Roman */
+[lang="en"] {
+  font-family: 'Times New Roman';
+}
+
+/* Bangla text will use Noto Sans Bengali */
+[lang="bn"] {
+  font-family: 'Noto Sans Bengali';
+}
+
+/* Specific elements in Bengali may need font size adjustments */
+[lang="bn"] h1, 
+[lang="bn"] h2, 
+[lang="bn"] h3 {
+  line-height: 1.5;
+}
+
+/* Adjust spacing for Bengali text which may be taller */
+[lang="bn"] p {
+  line-height: 1.8;
+} 
