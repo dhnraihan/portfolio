@@ -1,0 +1,316 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base Font Family */
+body {
+  font-family: 'Times New Roman';
+}
+
+/* English text will use Times New Roman */
+[lang="en"] {
+  font-family: 'Times New Roman';
+}
+
+/* Bangla text will use Noto Sans Bengali */
+[lang="bn"] {
+  font-family: 'Noto Sans Bengali';
+}
+
+/* Profile Glow Animation */
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 1);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  }
+}
+
+.glow-animation {
+  animation: glow 2.5s infinite alternate;
+}
+
+/* Gradient Animation */
+.animated-gradient {
+  background: linear-gradient(
+    -225deg,
+    #e17055,
+    #fdcb6e,
+    #55efc4,
+    #dfe6e9,
+    #6c5ce7,
+    #e17055,
+    #a29bfe,
+    #00b894
+  );
+  background-size: 400% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: gradientAnimation 15s linear infinite;
+}
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 400% 50%;
+  }
+}
+
+/* Active Navigation Link */
+.active-nav {
+  @apply text-blue-600 font-bold relative;
+}
+
+.active-nav::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  @apply bg-blue-600;
+  transform-origin: center;
+  animation: navHighlight 0.3s ease forwards;
+}
+
+@keyframes navHighlight {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Float Animation */
+.float-element {
+  transition: transform 0.3s ease;
+}
+
+/* For parallax effect */
+.parallax-bg {
+  will-change: transform;
+}
+
+/* Custom Cursor */
+.cursor-dot {
+  position: fixed;
+  width: 12px;
+  height: 12px;
+  @apply bg-blue-600;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.7;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+}
+
+/* Project card hover effect */
+.project-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  transform: translateY(-10px) scale(1.01);
+}
+
+/* Submit Button Glow Effect */
+.btn-glow {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.btn-glow::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  @apply rounded-lg;
+  padding: 3px; /* thickness of the gradient border */
+  background: linear-gradient(
+    45deg, 
+    rgba(199, 210, 254, 0), 
+    rgba(99, 102, 241, 1), 
+    rgba(147, 51, 234, 1), 
+    rgba(99, 102, 241, 1),
+    rgba(199, 210, 254, 0)
+  );
+  background-size: 400% auto;
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: border-animate 3s infinite linear;
+  opacity: 0.8;
+}
+
+@keyframes border-animate {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 400% center;
+  }
+}
+
+.btn-glow::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 60%);
+  opacity: 0.5;
+  z-index: 0;
+  animation: pulse-glow 3s infinite;
+}
+
+.btn-glow:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+  @apply shadow-lg shadow-blue-500/80;
+}
+
+.btn-glow:hover::before {
+  opacity: 1;
+}
+
+@keyframes pulse-glow {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0.2;
+  }
+}
+
+.dark .btn-glow {
+  box-shadow: 0 0 30px rgba(79, 70, 229, 0.6);
+  border-color: rgba(139, 92, 246, 0.5);
+}
+
+.dark .btn-glow:hover {
+  box-shadow: 0 0 40px rgba(99, 102, 241, 0.8);
+  border-color: rgba(167, 139, 250, 0.8);
+}
+
+.form-group .flex:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.dark .form-group .flex:hover {
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2);
+}
+
+/* Social Icons Hero Section */
+.social-hero-icon {
+  transform: translateY(0);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.social-hero-icon:hover {
+  transform: translateY(-5px);
+}
+
+/* Social Icons Contact Section - Enhanced */
+.social-contact-icon {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.social-contact-icon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15), transparent);
+  z-index: 2;
+  border-radius: 10px 10px 0 0;
+}
+
+.social-contact-icon::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.2), transparent);
+  z-index: 2;
+  border-radius: 0 0 10px 10px;
+}
+
+.social-icon-glow {
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.8) 0%, transparent 70%);
+  z-index: 3;
+}
+
+.social-contact-icon:hover .social-icon-glow {
+  opacity: 0.3;
+}
+
+.social-icon-shine {
+  position: absolute;
+  top: -50%;
+  left: -100%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(25deg);
+  z-index: 4;
+  transition: all 0.75s;
+}
+
+.social-contact-icon:hover .social-icon-shine {
+  animation: shineSweep 1s forwards;
+}
+
+@keyframes shineSweep {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 200%;
+  }
+}
+
+.social-contact-icon i {
+  transition: all 0.5s ease;
+  transform: scale(0.9);
+}
+
+.social-contact-icon:hover i {
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.7));
+}
+
+.dark .social-contact-icon {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+} 
