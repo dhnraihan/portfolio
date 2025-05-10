@@ -38,7 +38,7 @@
     
     <!-- Tailwind CSS (compiled), Font Awesome CDN, Particles.js and EmailJS -->
     <link rel="stylesheet" href="assets/css/style.css">
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
@@ -1189,9 +1189,9 @@
       });
 
       // EmailJS JavaScript
-      (function () {
+      window.onload = function() {
         emailjs.init("b_ereeKQSvz0NYtQ2");
-      })();
+      }
 
       document
         .getElementById("contact-form")
