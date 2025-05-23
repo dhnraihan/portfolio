@@ -1176,11 +1176,15 @@
     <!-- Footer -->
     <footer class="bg-gray-800 text-white py-8">
       <div class="max-w-6xl mx-auto px-4 text-center">
-        <p>© 2025 My Portfolio. All rights reserved.</p>
+        <p>© <span id="current-year"></span> My Portfolio. All rights reserved.</p>
       </div>
     </footer>
 
     <script>
+
+      // Automatically set the current year
+      document.getElementById('current-year').textContent = new Date().getFullYear();
+
       // Certificates JavaScript for Certificate Carousel
       document.addEventListener("DOMContentLoaded", function () {
         const certificatesWrapper = document.getElementById(
