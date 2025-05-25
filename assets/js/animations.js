@@ -226,18 +226,25 @@ function initContactAnimations() {
     `;
     document.head.appendChild(style);
     
-    typingText.appendChild(cursorSpan);
-    
-    // Type the text character by character
-    let chars = text.split('');
-    chars.forEach((char, index) => {
-      tl.to(cursorSpan, {
-        duration: 0.1,
-        onStart: () => {
-          typingText.insertBefore(document.createTextNode(char), cursorSpan);
-        }
-      }, index * 0.1);
-    });
+    // Add the cursor to the typing text element only if it doesn't already exist
+    if (!typingText.querySelector('.typing-cursor')) {
+      typingText.appendChild(cursorSpan);
+      
+      // Type the text character by character safely
+      let currentText = "";
+      let chars = text.split('');
+      chars.forEach((char, index) => {
+        tl.to({}, {
+          duration: 0.1,
+          onStart: () => {
+            currentText += char;
+            // Safely update text content by removing and re-adding the cursor
+            typingText.textContent = currentText;
+            typingText.appendChild(cursorSpan);
+          }
+        }, index * 0.1);
+      });
+    }
   }
 
   // Contact Sections Reveal Animation
@@ -512,7 +519,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Add class to elements for selecting in GSAP
   document.querySelector("#home img").classList.add("hero-profile");
   document.querySelectorAll("#home h1, #home h2, #home p").forEach(el => el.classList.add("hero-text"));
-  document.querySelectorAll("#home .flex.space-x-7 a").forEach(el => el.classList.add("social-icon"));
+  document.querySelectorAll("#home .flex.space-x-6 a").forEach(el => el.classList.add("social-icon"));
   document.querySelector("#home a[href='#projects'] span").classList.add("cta-button");
   
   document.querySelectorAll("#about p, #about h3, #about ul").forEach(el => el.classList.add("about-text"));
