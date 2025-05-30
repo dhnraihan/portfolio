@@ -1180,6 +1180,140 @@
       </div>
     </footer>
 
+    <!-- Fixed WhatsApp Button -->
+    <div class="whatsapp-button" style="position: fixed; bottom: 30px; right: 30px; z-index: 99999;">
+      <!-- Animated Rings -->
+      <div class="animated-rings">
+        <div class="ring ring1"></div>
+        <div class="ring ring2"></div>
+        <div class="ring ring3"></div>
+        <div class="ring ring4"></div>
+      </div>
+      
+      <a href="http://wa.me/8801844285788" 
+         target="_blank" 
+         rel="noopener noreferrer" 
+         class="block bg-green-500 text-white w-16 h-16 flex items-center justify-center rounded-full shadow-2xl hover:bg-green-600 hover:scale-110 transition-all duration-300 group relative"
+         style="box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); display: flex !important;"
+      >
+        <div class="animate-bounce-slow">
+          <i class="fab fa-whatsapp text-4xl"></i>
+        </div>
+        <span class="absolute right-full mr-3 bg-black text-white px-4 py-2 rounded text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
+          Chat on WhatsApp
+        </span>
+      </a>
+    </div>
+
+    <style>
+      .whatsapp-button {
+        visibility: visible !important;
+        opacity: 1 !important;
+      }
+      .whatsapp-button a {
+        visibility: visible !important;
+        opacity: 1 !important;
+      }
+      
+      /* Animated Rings Styles */
+      .animated-rings {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+      }
+      
+      .ring {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        border: 2px solid transparent;
+        animation: ripple 2s cubic-bezier(0.23, 1, 0.32, 1) infinite;
+      }
+      
+      .ring1 {
+        width: 70px;
+        height: 70px;
+        border-color: #25D366;
+        animation-delay: 0s;
+      }
+      
+      .ring2 {
+        width: 80px;
+        height: 80px;
+        border-color: #128C7E;
+        animation-delay: 0.5s;
+      }
+      
+      .ring3 {
+        width: 90px;
+        height: 90px;
+        border-color: #075E54;
+        animation-delay: 1s;
+      }
+      
+      .ring4 {
+        width: 100px;
+        height: 100px;
+        border-color: #25D366;
+        animation-delay: 1.5s;
+      }
+      
+      @keyframes ripple {
+        0% {
+          transform: translate(-50%, -50%) scale(0.9);
+          opacity: 1;
+        }
+        100% {
+          transform: translate(-50%, -50%) scale(1.5);
+          opacity: 0;
+        }
+      }
+      
+      @keyframes bounce {
+        0%, 100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+      
+      .animate-bounce-slow {
+        animation: bounce 2s infinite;
+      }
+      
+      /* Add sparkle effect */
+      .whatsapp-button a::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+        pointer-events: none;
+        animation: sparkle 4s linear infinite;
+      }
+      
+      @keyframes sparkle {
+        0% {
+          transform: rotate(0deg);
+          opacity: 0.5;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          transform: rotate(360deg);
+          opacity: 0.5;
+        }
+      }
+    </style>
+
     <script>
 
       // Automatically set the current year
